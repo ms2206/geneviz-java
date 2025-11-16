@@ -11,6 +11,14 @@ package GVJ.app;
 public class GenevizJava {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // Use dedicated thread – advised for Swing applications
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                // Create the main application window
+                mainFrame frame = new mainFrame();
+                // Make the window visible to the user
+                frame.setVisible(true);
+            }
+        });
     }
 }
