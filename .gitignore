@@ -31,3 +31,4 @@
 hs_err_pid*
 replay_pid*
 /geneviz-java/target/
+.github/copilot-instructions.md
