@@ -5,8 +5,11 @@
 package GVJ.io;
 
 import java.io.IOException;
+import java.io.File;
 import java.nio.file.Path;
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
+import org.biojava.nbio.genome.parsers.gff.GFF3Reader;
+import org.biojava.nbio.genome.parsers.gff.GeneIDGFF2Reader;
 
 /**
  *
@@ -16,7 +19,7 @@ public abstract class GffParser {
     /**
      * Factory method to get the appropriate GFF parser based on version.
      * 
-     * @param version
+     * @param version GFF version (2 or 3)
      * @return GffParser
      */
     public static GffParser getParser(int version) {
@@ -38,37 +41,38 @@ public abstract class GffParser {
      * @return FeatureList
      * @throws IOException
      */
-    public abstract FeatureList parse(Path file) throws IOException;
+    public abstract FeatureList parse(File file) throws IOException;
 }
 
 /**
  * GFF2 Parser implementation.
  * 
- * @param file
+ * @param file File object representing the GFF2 file
  * @return FeatureList
  * @throws IOException
  */
 class Gff2Parser extends GffParser {
     @Override
-    public FeatureList parse(Path file) throws IOException {
-        // Implement GFF2 parsing logic here
-        // Placeholder implementation
-        return new FeatureList();
+    public FeatureList parse(File file) throws IOException {
+        String filepath = file.getAbsolutePath();
+
+        FeatureList featureList = GeneIDGFF2Reader.read(filepath);
+        return featureList;
     }
 }
 
 /**
  * GFF3 Parser implementation.
  * 
- * @param file
+ * @param file File object representing the GFF3 file
  * @return FeatureList
  * @throws IOException
  */
 class Gff3Parser extends GffParser {
     @Override
-    public FeatureList parse(Path file) throws IOException {
-        // Implement GFF3 parsing logic here
-        // Placeholder implementation
-        return new FeatureList();
+    public FeatureList parse(File file) throws IOException {
+        Path filepath = file.toPath();
+        FeatureList featureList = GFF3Reader.read(filepath);
+        return featureList;
     }
 }
