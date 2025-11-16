@@ -4,8 +4,10 @@
 
 # Ignore GFF files
 *.gff
-*.gff3
+*.gtf
 
+# Ignore MacOS system files
+.DS_Store
 
 # Compiled class file
 *.class
