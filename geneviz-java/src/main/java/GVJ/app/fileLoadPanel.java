@@ -66,8 +66,8 @@ public class fileLoadPanel extends javax.swing.JPanel {
             .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addComponent(jRadioButtonGFF)
+                    .addComponent(jLabel2)
                     .addComponent(jRadioButtonFASTA)
                     .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -75,30 +75,29 @@ public class fileLoadPanel extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
                                 .addComponent(jButtonLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButtonClearAllFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         fileLoadInnerPanelLayout.setVerticalGroup(
             fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButtonFASTA)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButtonGFF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLoad)
                     .addComponent(jButtonClearAllFiles))
-                .addGap(17, 17, 17))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -106,16 +105,16 @@ public class fileLoadPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
     }// </editor-fold>//GEN-END:initComponents
 
