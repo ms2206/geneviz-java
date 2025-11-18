@@ -31,7 +31,7 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTabbedPane = new javax.swing.JTabbedPane();
@@ -54,20 +54,19 @@ public class mainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout sequenceViewer1Layout = new javax.swing.GroupLayout(sequenceViewer1);
         sequenceViewer1.setLayout(sequenceViewer1Layout);
         sequenceViewer1Layout.setHorizontalGroup(
-                sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(sequenceViewer1Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(sequenceViewer3, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(75, 75, 75)));
+            sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sequenceViewer1Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(sequenceViewer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(75, 75, 75))
+        );
         sequenceViewer1Layout.setVerticalGroup(
-                sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                sequenceViewer1Layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(sequenceViewer3, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(23, 23, 23)));
+            sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sequenceViewer1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(sequenceViewer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
+        );
 
         jTabbedPane.addTab("Sequence Viewer", sequenceViewer1);
 
@@ -82,9 +81,19 @@ public class mainFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItemImportFASTA);
 
         jMenuItemImportGFF.setText("Import GFF");
+        jMenuItemImportGFF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemImportGFFActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemImportGFF);
 
         jMenuItemClearAllFiles.setText("Clear all files");
+        jMenuItemClearAllFiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClearAllFilesActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemClearAllFiles);
 
         jMenuBar1.add(jMenu1);
@@ -97,22 +106,33 @@ public class mainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jTabbedPane)
-                                .addGap(30, 30, 30)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jTabbedPane)
+                .addGap(30, 30, 30))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 317,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(33, Short.MAX_VALUE)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
 
         jTabbedPane.getAccessibleContext().setAccessibleName("File Selection");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemImportGFFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportGFFActionPerformed
+        // TODO add your handling code here:
+        this.fileLoadPanel2.loadGff();
+    }//GEN-LAST:event_jMenuItemImportGFFActionPerformed
+
+    private void jMenuItemClearAllFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClearAllFilesActionPerformed
+        // TODO add your handling code here:
+        this.fileLoadPanel2.clearAllFiles();
+    }//GEN-LAST:event_jMenuItemClearAllFilesActionPerformed
 
     private void jMenuItemImportFASTAActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemImportFASTAActionPerformed
         // mainFrame just asks fileLoadPanel to do something

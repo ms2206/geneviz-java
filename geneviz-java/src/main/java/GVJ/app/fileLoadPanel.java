@@ -203,18 +203,6 @@ public class fileLoadPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButtonGFF;
     // End of variables declaration//GEN-END:variables
 
-    private void updateLabelWithFileStatus(JLabel jLabelFileStatus, String filename) {
-        jLabelFileStatus.setText("Loaded: " + filename);
-        jLabelFileStatus.setForeground(new Color(40, 167, 69));
-        jLabelFileStatus.setVisible(true);
-    }
-
-    private void updateLabelToLoading(javax.swing.JLabel label) {
-        label.setText("Loading...");
-        label.setForeground(Color.BLACK);
-        label.setVisible(true);
-    }
-
     public void loadFasta() {
         jRadioButtonFASTA.setSelected(true);
         loadFile();
@@ -223,6 +211,13 @@ public class fileLoadPanel extends javax.swing.JPanel {
     public void loadGff() {
         jRadioButtonGFF.setSelected(true);
         loadFile();
+    }
+
+    public void clearAllFiles() {
+        jLabelFastaFileStatus.setVisible(false);
+        jLabelGffFileStatus.setVisible(false);
+        jRadioButtonFASTA.setSelected(false);
+        jRadioButtonGFF.setSelected(false);
     }
 
     private void loadFile() {
@@ -322,5 +317,17 @@ public class fileLoadPanel extends javax.swing.JPanel {
             jButtonLoad.setEnabled(true);
 
         }
+    }
+
+    private void updateLabelWithFileStatus(JLabel jLabelFileStatus, String filename) {
+        jLabelFileStatus.setText("Loaded: " + filename);
+        jLabelFileStatus.setForeground(new Color(40, 167, 69));
+        jLabelFileStatus.setVisible(true);
+    }
+
+    private void updateLabelToLoading(javax.swing.JLabel label) {
+        label.setText("Loading...");
+        label.setForeground(Color.BLACK);
+        label.setVisible(true);
     }
 }
