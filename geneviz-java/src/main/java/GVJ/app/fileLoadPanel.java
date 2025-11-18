@@ -183,6 +183,39 @@ public class fileLoadPanel extends javax.swing.JPanel {
 
     private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonLoadActionPerformed
 
+        // Call loadFile method
+        loadFile();
+
+    }// GEN-LAST:event_jButtonLoadActionPerformed
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupFileSelection;
+    private javax.swing.JPanel fileLoadInnerPanel;
+    private javax.swing.JButton jButtonClearAllFiles;
+    private javax.swing.JButton jButtonLoad;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelFastaFileStatus;
+    private javax.swing.JLabel jLabelGffFileStatus;
+    private javax.swing.JRadioButton jRadioButtonFASTA;
+    private javax.swing.JRadioButton jRadioButtonGFF;
+    // End of variables declaration//GEN-END:variables
+
+    private void updateLabelWithFileStatus(JLabel jLabelFileStatus, String filename) {
+        jLabelFileStatus.setText("Loaded: " + filename);
+        jLabelFileStatus.setForeground(new Color(40, 167, 69));
+        jLabelFileStatus.setVisible(true);
+    }
+
+    private void updateLabelToLoading(javax.swing.JLabel label) {
+        label.setText("Loading...");
+        label.setForeground(Color.BLACK);
+        label.setVisible(true);
+    }
+
+    private void loadFile() {
         if (jRadioButtonFASTA.isSelected()) {
 
             // Indicate loading state
@@ -279,33 +312,5 @@ public class fileLoadPanel extends javax.swing.JPanel {
             jButtonLoad.setEnabled(true);
 
         }
-
-    }// GEN-LAST:event_jButtonLoadActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupFileSelection;
-    private javax.swing.JPanel fileLoadInnerPanel;
-    private javax.swing.JButton jButtonClearAllFiles;
-    private javax.swing.JButton jButtonLoad;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelFastaFileStatus;
-    private javax.swing.JLabel jLabelGffFileStatus;
-    private javax.swing.JRadioButton jRadioButtonFASTA;
-    private javax.swing.JRadioButton jRadioButtonGFF;
-    // End of variables declaration//GEN-END:variables
-
-    private void updateLabelWithFileStatus(JLabel jLabelFileStatus, String filename) {
-        jLabelFileStatus.setText("Loaded: " + filename);
-        jLabelFileStatus.setForeground(new Color(40, 167, 69));
-        jLabelFileStatus.setVisible(true);
-    }
-
-    private void updateLabelToLoading(javax.swing.JLabel label) {
-        label.setText("Loading...");
-        label.setForeground(Color.BLACK);
-        label.setVisible(true);
     }
 }
