@@ -215,6 +215,16 @@ public class fileLoadPanel extends javax.swing.JPanel {
         label.setVisible(true);
     }
 
+    public void loadFasta() {
+        jRadioButtonFASTA.setSelected(true);
+        loadFile();
+    }
+
+    public void loadGff() {
+        jRadioButtonGFF.setSelected(true);
+        loadFile();
+    }
+
     private void loadFile() {
         if (jRadioButtonFASTA.isSelected()) {
 
