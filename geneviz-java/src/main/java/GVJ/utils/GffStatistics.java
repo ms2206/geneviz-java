@@ -4,7 +4,10 @@
  */
 package GVJ.utils;
 
+import java.util.Stack;
+import org.biojava.nbio.genome.parsers.gff.FeatureI;
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
+import org.biojava.nbio.genome.parsers.gff.Location;
 
 /**
  *
@@ -19,19 +22,43 @@ public class GffStatistics {
      * @return The average number of exons per gene
      */
     public static double getAverageExonsPerGene(FeatureList features) {
-        // Logic here
-        return 0;
+
+        // Select by type
+        FeatureList exonFeatures = features.selectByType("exon");
+        int exonCount = exonFeatures.size();
+
+        FeatureList geneFeatures = features.selectByType("gene");
+        int geneCount = geneFeatures.size();
+
+        try {
+            return (double) exonCount / geneCount;
+        } catch (ArithmeticException e) {
+            return 0;
+        }
+
     }
 
     /**
-     * Find the longest and shortest features in the FeatureList
+     * Find the longest and shortest feature in the FeatureList
      * 
-     * @param features
-     * @return
+     * @param features The FeatureList from a parsed GFF file
+     * @param type     The type of feature to consider (e.g., "gene", "exon")
+     * @return A FeatureList containing the longest and shortest features
      */
-    public static FeatureList longestShortestFeatures(FeatureList features) {
-        // Logic here
+    public static FeatureList longestShortestFeatures(FeatureList features, String type) {
+
+        FeatureList selectedFeature = features.selectByType(type);
+
+        if (selectedFeature.isEmpty()) {
+            return new FeatureList();
+        }
+
+        FeatureList result = new FeatureList();
+
+        // Find longest feature
+
         return null;
+
     }
 
     /**

@@ -38,7 +38,7 @@ public class SWTC_003_test_GffParser {
 
         // run select feature by group test
         // System.out.println("Running selectFeatureByGroup_test...");
-        // selectFeatureByGroup();
+        selectFeatureByGroup();
 
         // run loop GFF test
         System.out.println("Running loopGFF_test...");
