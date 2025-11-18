@@ -5,6 +5,7 @@
 package GVJ.app;
 
 import GVJ.io.FastaParser;
+import GVJ.io.GffParser;
 
 import java.awt.Color;
 import java.awt.FileDialog;
@@ -16,6 +17,7 @@ import java.io.File;
 
 import javax.swing.SwingUtilities;
 import org.biojava.nbio.core.sequence.DNASequence;
+import org.biojava.nbio.genome.parsers.gff.FeatureList;
 
 /**
  *
@@ -179,15 +181,14 @@ public class fileLoadPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonLoadActionPerformed
-        // Set label to loading
-        jLabelFastaFileStatus.setText("Loading...");
-        jLabelFastaFileStatus.setForeground(Color.BLACK);
-        jLabelFastaFileStatus.setVisible(true);
-
-        // Disable Load button during loading
-        jButtonLoad.setEnabled(false);
 
         if (jRadioButtonFASTA.isSelected()) {
+
+            // Indicate loading state
+            setLoadingState(jLabelFastaFileStatus);
+            // Disable Load button during loading
+            jButtonLoad.setEnabled(false);
+
             // get parent window
             Window window = SwingUtilities.getWindowAncestor(this);
             // cast to Frame
@@ -226,9 +227,13 @@ public class fileLoadPanel extends javax.swing.JPanel {
             // Re-enable Load button after loading
             jButtonLoad.setEnabled(true);
 
-        } else if (jRadioButtonGFF.isSelected())
+        } else if (jRadioButtonGFF.isSelected()) {
 
-        {
+            // Indicate loading state
+            setLoadingState(jLabelGffFileStatus);
+            // Disable Load button during loading
+            jButtonLoad.setEnabled(false);
+
             // get parent window
             Window window = SwingUtilities.getWindowAncestor(this);
             // cast to Frame
@@ -246,13 +251,45 @@ public class fileLoadPanel extends javax.swing.JPanel {
             fileDialog.setFilenameFilter(filter);
             fileDialog.setVisible(true);
 
-            // TODO : Add logic to actually load and process the selected GFF file
-            // Update label to show the loaded file status
-            jLabelGffFileStatus.setText("Loaded: " + fileDialog.getFile());
-            jLabelGffFileStatus.setVisible(true);
+            try {
+                String filepath = fileDialog.getDirectory() + fileDialog.getFile();
+                File gffFile = new File(filepath);
+
+                GffParser parser;
+
+                // get correct parser based on file extension
+                if (gffFile.getName().endsWith(".gtf")) {
+                    parser = GffParser.getParser(2);
+                } else {
+                    parser = GffParser.getParser(3);
+                }
+
+                FeatureList gff = parser.parse(gffFile);
+
+                // Update label to show the loaded file status
+                jLabelFastaFileStatus.setText("Loaded: " + fileDialog.getFile());
+                jLabelFastaFileStatus.setForeground(new Color(40, 167, 69));
+                jLabelFastaFileStatus.setVisible(true);
+
+            } catch (Exception e) {
+                jLabelGffFileStatus.setText("Error loading GFF file.");
+                jLabelGffFileStatus.setForeground(Color.RED);
+                jLabelGffFileStatus.setVisible(true);
+                e.printStackTrace();
+            }
+
+            // Re-enable Load button after loading
+            jButtonLoad.setEnabled(true);
+
         }
 
     }// GEN-LAST:event_jButtonLoadActionPerformed
+
+    private void setLoadingState(javax.swing.JLabel label) {
+        label.setText("Loading...");
+        label.setForeground(Color.BLACK);
+        label.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupFileSelection;
