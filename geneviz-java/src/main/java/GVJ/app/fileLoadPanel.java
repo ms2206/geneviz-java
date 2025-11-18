@@ -14,6 +14,7 @@ import java.awt.Window;
 import java.io.FilenameFilter;
 import java.util.Map;
 import java.io.File;
+import javax.swing.JLabel;
 
 import javax.swing.SwingUtilities;
 import org.biojava.nbio.core.sequence.DNASequence;
@@ -185,7 +186,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
         if (jRadioButtonFASTA.isSelected()) {
 
             // Indicate loading state
-            setLoadingState(jLabelFastaFileStatus);
+            updateLabelToLoading(jLabelFastaFileStatus);
             // Disable Load button during loading
             jButtonLoad.setEnabled(false);
 
@@ -213,9 +214,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
                 Map<String, DNASequence> fastaMap = FastaParser.parseFasta(fastaFile);
 
                 // Update label to show the loaded file status
-                jLabelFastaFileStatus.setText("Loaded: " + fileDialog.getFile());
-                jLabelFastaFileStatus.setForeground(new Color(40, 167, 69));
-                jLabelFastaFileStatus.setVisible(true);
+                updateLabelWithFileStatus(jLabelFastaFileStatus, fileDialog.getFile());
 
             } catch (Exception e) {
                 jLabelFastaFileStatus.setText("Error loading FASTA file.");
@@ -230,7 +229,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
         } else if (jRadioButtonGFF.isSelected()) {
 
             // Indicate loading state
-            setLoadingState(jLabelGffFileStatus);
+            updateLabelToLoading(jLabelGffFileStatus);
             // Disable Load button during loading
             jButtonLoad.setEnabled(false);
 
@@ -267,9 +266,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
                 FeatureList gff = parser.parse(gffFile);
 
                 // Update label to show the loaded file status
-                jLabelFastaFileStatus.setText("Loaded: " + fileDialog.getFile());
-                jLabelFastaFileStatus.setForeground(new Color(40, 167, 69));
-                jLabelFastaFileStatus.setVisible(true);
+                updateLabelWithFileStatus(jLabelGffFileStatus, fileDialog.getFile());
 
             } catch (Exception e) {
                 jLabelGffFileStatus.setText("Error loading GFF file.");
@@ -285,12 +282,6 @@ public class fileLoadPanel extends javax.swing.JPanel {
 
     }// GEN-LAST:event_jButtonLoadActionPerformed
 
-    private void setLoadingState(javax.swing.JLabel label) {
-        label.setText("Loading...");
-        label.setForeground(Color.BLACK);
-        label.setVisible(true);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupFileSelection;
     private javax.swing.JPanel fileLoadInnerPanel;
@@ -305,4 +296,16 @@ public class fileLoadPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButtonFASTA;
     private javax.swing.JRadioButton jRadioButtonGFF;
     // End of variables declaration//GEN-END:variables
+
+    private void updateLabelWithFileStatus(JLabel jLabelFileStatus, String filename) {
+        jLabelFileStatus.setText("Loaded: " + filename);
+        jLabelFileStatus.setForeground(new Color(40, 167, 69));
+        jLabelFileStatus.setVisible(true);
+    }
+
+    private void updateLabelToLoading(javax.swing.JLabel label) {
+        label.setText("Loading...");
+        label.setForeground(Color.BLACK);
+        label.setVisible(true);
+    }
 }
