@@ -45,7 +45,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -63,8 +63,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
 
         jLabel1.setText("jLabel1");
 
-        fileLoadInnerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "File Selection",
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+        fileLoadInnerPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "File Selection", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
 
         jLabel2.setText("Choose a file type to load:");
 
@@ -88,6 +87,11 @@ public class fileLoadPanel extends javax.swing.JPanel {
         });
 
         jButtonClearAllFiles.setText("Clear all");
+        jButtonClearAllFiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearAllFilesActionPerformed(evt);
+            }
+        });
 
         jLabelFastaFileStatus.setText("Loaded FASTA...");
 
@@ -96,90 +100,82 @@ public class fileLoadPanel extends javax.swing.JPanel {
         javax.swing.GroupLayout fileLoadInnerPanelLayout = new javax.swing.GroupLayout(fileLoadInnerPanel);
         fileLoadInnerPanel.setLayout(fileLoadInnerPanelLayout);
         fileLoadInnerPanelLayout.setHorizontalGroup(
-                fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addGroup(fileLoadInnerPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                                .addComponent(jRadioButtonFASTA)
-                                                .addGap(28, 28, 28)
-                                                .addComponent(jLabelFastaFileStatus,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                                .addGroup(fileLoadInnerPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel2)
-                                                        .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                                                .addGap(21, 21, 21)
-                                                                .addGroup(fileLoadInnerPanelLayout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jLabel4)
-                                                                        .addComponent(jLabel3)
-                                                                        .addGroup(fileLoadInnerPanelLayout
-                                                                                .createSequentialGroup()
-                                                                                .addComponent(jButtonLoad,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        98,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(18, 18, 18)
-                                                                                .addComponent(jButtonClearAllFiles,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        98,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                                .addGap(0, 80, Short.MAX_VALUE))
-                                        .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                                .addComponent(jRadioButtonGFF)
-                                                .addGap(42, 42, 42)
-                                                .addComponent(jLabelGffFileStatus, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addContainerGap()));
+            fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                        .addComponent(jRadioButtonFASTA)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabelFastaFileStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                        .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                                        .addComponent(jButtonLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonClearAllFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 80, Short.MAX_VALUE))
+                    .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                        .addComponent(jRadioButtonGFF)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabelGffFileStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
         fileLoadInnerPanelLayout.setVerticalGroup(
-                fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(fileLoadInnerPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButtonFASTA)
-                                        .addComponent(jLabelFastaFileStatus))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(fileLoadInnerPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButtonGFF)
-                                        .addComponent(jLabelGffFileStatus))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addGroup(fileLoadInnerPanelLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButtonLoad)
-                                        .addComponent(jButtonClearAllFiles))
-                                .addContainerGap(31, Short.MAX_VALUE)));
+            fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fileLoadInnerPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonFASTA)
+                    .addComponent(jLabelFastaFileStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonGFF)
+                    .addComponent(jLabelGffFileStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(fileLoadInnerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonLoad)
+                    .addComponent(jButtonClearAllFiles))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
 
         jLabelFastaFileStatus.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(103, Short.MAX_VALUE)
-                                .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(94, 94, 94)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(51, Short.MAX_VALUE)
-                                .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(fileLoadInnerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonClearAllFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearAllFilesActionPerformed
+        // TODO add your handling code here:
+        clearAllFiles();
+        
+    }//GEN-LAST:event_jButtonClearAllFilesActionPerformed
 
     private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonLoadActionPerformed
 
