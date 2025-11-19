@@ -4,11 +4,16 @@
  */
 package GVJ.gui;
 
+import GVJ.models.DataManager;
+
 /**
  *
  * @author mspriggs
  */
 public class mainFrame extends javax.swing.JFrame {
+
+    // Create DataManager instance
+    DataManager dataManager = new DataManager();
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger
             .getLogger(mainFrame.class.getName());
@@ -18,25 +23,46 @@ public class mainFrame extends javax.swing.JFrame {
      */
     public mainFrame() {
         initComponents();
-        jTabbedPane.setEnabledAt(1, false); // Disable tab initially
+
+        fileLoadPanel2.setDataManager(dataManager); // Pass DataManager to fileLoadPanel
+        basicStatistics1.setDataManager(dataManager); // Pass DataManager to basicStatistics panel
+
+        // Disable the Basic Statistics tab until data is loaded
+        jTabbedPane.setEnabledAt(1, false);
+
+        // Use a timer to periodically check if data is loaded
+        javax.swing.Timer timer = new javax.swing.Timer(1000, e -> {
+            if (dataManager.hasFastaData() && dataManager.hasGffData()) {
+                jTabbedPane.setEnabledAt(1, true);
+
+            } else {
+                // close tab and disable
+                jTabbedPane.setSelectedIndex(0);
+                jTabbedPane.setEnabledAt(1, false);
+            }
+        });
+        timer.start();
 
         /*
          * ###########################
          * TESTING ONLY - DELETE LATER
          * ###########################
          */
-        // wait 2 seconds then enable tab
-        new java.util.Timer().schedule(new java.util.TimerTask() {
-            @Override
-            public void run() {
-                jTabbedPane.setEnabledAt(1, true);
-            }
-        }, 2000);
+        // wait 20 seconds then enable tab
+        // new java.util.Timer().schedule(new java.util.TimerTask() {
+        // @Override
+        // public void run() {
+        // jTabbedPane.setEnabledAt(1, true);
+        // basicStatistics1.refreshComboBoxs();
+        // }
+        // }, 20000);
+
         /*
          * ###########################
          * TESTING ONLY - DELETE LATER
          * ###########################
          */
+
     }
 
     /**
