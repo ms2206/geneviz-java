@@ -76,6 +76,7 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -94,6 +95,11 @@ public class mainFrame extends javax.swing.JFrame {
 
         jTabbedPane.setToolTipText("");
         jTabbedPane.setName(""); // NOI18N
+        jTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPaneStateChanged(evt);
+            }
+        });
         jTabbedPane.addTab("File Selection", fileLoadPanel2);
 
         javax.swing.GroupLayout sequenceViewer1Layout = new javax.swing.GroupLayout(sequenceViewer1);
@@ -171,6 +177,13 @@ public class mainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {// GEN-FIRST:event_jTabbedPaneStateChanged
+        int selectedIndex = jTabbedPane.getSelectedIndex();
+        if (selectedIndex == 1) { // Basic Statistics tab
+            basicStatistics1.refreshComboBoxs();
+        }
+    }// GEN-LAST:event_jTabbedPaneStateChanged
 
     private void jMenuItemImportGFFActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemImportGFFActionPerformed
         // TODO add your handling code here:

@@ -17,18 +17,46 @@ import org.biojava.nbio.genome.parsers.gff.Location;
 public class GffUtils {
 
     /**
-     * Calculate the average number of exons per gene
+     * Calculate the average number of Features per gene
      * 
      * @param features The FeatureList from a parsed GFF file
-     * @return The average number of exons per gene
+     * @param Feature  to consider (e.g., "exon")
+     * @return The average number of $features per all genes
      */
-    public static double getAverageExonsPerGene(FeatureList features) {
+    public static double getAverageFeaturesPerGene(FeatureList features, String type) {
 
         // Select by type
-        FeatureList exonFeatures = features.selectByType("exon");
+        FeatureList exonFeatures = features.selectByType(type);
         int exonCount = exonFeatures.size();
 
         FeatureList geneFeatures = features.selectByType("gene");
+        int geneCount = geneFeatures.size();
+
+        try {
+            return (double) exonCount / geneCount;
+        } catch (ArithmeticException e) {
+            return 0;
+        }
+
+    }
+
+    // misleading method name since I can't get an average of just one gene.
+    // Overload from getAverageFeaturesPerGene.
+    /**
+     * Calculate the average number of Features per gene
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param Feature  to consider (e.g., "exon")
+     * @param geneId   The gene ID to filter by
+     * @return The number of $features per $geneId
+     */
+
+    public static double getAverageFeaturesPerGene(FeatureList features, String type, String geneId) {
+        // Select by type
+        FeatureList exonFeatures = features.selectByType(type);
+        int exonCount = exonFeatures.size();
+
+        FeatureList geneFeatures = features.selectByType("gene").selectByAttribute("ID", geneId);
         int geneCount = geneFeatures.size();
 
         try {

@@ -5,7 +5,7 @@
 package GVJ.testing;
 
 import GVJ.io.GffParser;
-import static GVJ.utils.GffUtils.getAverageExonsPerGene;
+import static GVJ.utils.GffUtils.getAverageFeaturesPerGene;
 import static GVJ.utils.GffUtils.getAllGeneIds;
 
 import java.io.File;
@@ -48,7 +48,7 @@ public class SWTC_004_test_GffUtils {
         try {
             FeatureList gff3 = parser.parse(file);
 
-            double avgExons = getAverageExonsPerGene(gff3);
+            double avgExons = getAverageFeaturesPerGene(gff3, "exons");
             System.out.println("Average exons per gene: " + avgExons);
 
         } catch (Exception e) {
