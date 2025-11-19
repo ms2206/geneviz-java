@@ -26,14 +26,14 @@ public class GffUtils {
     public static double getAverageFeaturesPerGene(FeatureList features, String type) {
 
         // Select by type
-        FeatureList exonFeatures = features.selectByType(type);
-        int exonCount = exonFeatures.size();
+        FeatureList selectedFeatures = features.selectByType(type);
+        int featureCount = selectedFeatures.size(); // 3
 
         FeatureList geneFeatures = features.selectByType("gene");
-        int geneCount = geneFeatures.size();
+        int geneCount = geneFeatures.size(); // 1
 
         try {
-            return (double) exonCount / geneCount;
+            return (double) featureCount / geneCount;
         } catch (ArithmeticException e) {
             return 0;
         }
