@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GVJ.app;
+package GVJ.gui;
 
 /**
  *
@@ -18,8 +18,25 @@ public class mainFrame extends javax.swing.JFrame {
      */
     public mainFrame() {
         initComponents();
-        jTabbedPane.setEnabledAt(1, false); // Disable Sequence Viewer tab initially
+        jTabbedPane.setEnabledAt(1, false); // Disable tab initially
 
+        /*
+         * ###########################
+         * TESTING ONLY - DELETE LATER
+         * ###########################
+         */
+        // wait 2 seconds then enable tab
+        new java.util.Timer().schedule(new java.util.TimerTask() {
+            @Override
+            public void run() {
+                jTabbedPane.setEnabledAt(1, true);
+            }
+        }, 2000);
+        /*
+         * ###########################
+         * TESTING ONLY - DELETE LATER
+         * ###########################
+         */
     }
 
     /**
@@ -31,13 +48,15 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jTabbedPane = new javax.swing.JTabbedPane();
-        fileLoadPanel2 = new GVJ.app.fileLoadPanel();
-        sequenceViewer1 = new GVJ.app.SequenceViewer();
-        sequenceViewer3 = new GVJ.app.SequenceViewer();
+        fileLoadPanel2 = new GVJ.gui.fileLoadPanel();
+        sequenceViewer1 = new GVJ.gui.SequenceViewer();
+        basicStatistics1 = new GVJ.gui.basicStatistics();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImportFASTA = new javax.swing.JMenuItem();
@@ -54,21 +73,23 @@ public class mainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout sequenceViewer1Layout = new javax.swing.GroupLayout(sequenceViewer1);
         sequenceViewer1.setLayout(sequenceViewer1Layout);
         sequenceViewer1Layout.setHorizontalGroup(
-            sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sequenceViewer1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(sequenceViewer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(75, 75, 75))
-        );
+                sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                sequenceViewer1Layout.createSequentialGroup()
+                                        .addContainerGap(38, Short.MAX_VALUE)
+                                        .addComponent(basicStatistics1, javax.swing.GroupLayout.PREFERRED_SIZE, 700,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)));
         sequenceViewer1Layout.setVerticalGroup(
-            sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sequenceViewer1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(sequenceViewer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
-        );
+                sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sequenceViewer1Layout
+                                .createSequentialGroup()
+                                .addContainerGap(22, Short.MAX_VALUE)
+                                .addComponent(basicStatistics1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)));
 
-        jTabbedPane.addTab("Sequence Viewer", sequenceViewer1);
+        jTabbedPane.addTab("Basic Statistics", sequenceViewer1);
 
         jMenu1.setText("File");
 
@@ -106,33 +127,34 @@ public class mainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jTabbedPane)
-                .addGap(30, 30, 30))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 455,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(13, Short.MAX_VALUE)));
 
         jTabbedPane.getAccessibleContext().setAccessibleName("File Selection");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemImportGFFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImportGFFActionPerformed
+    private void jMenuItemImportGFFActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemImportGFFActionPerformed
         // TODO add your handling code here:
         this.fileLoadPanel2.loadGff();
-    }//GEN-LAST:event_jMenuItemImportGFFActionPerformed
+    }// GEN-LAST:event_jMenuItemImportGFFActionPerformed
 
-    private void jMenuItemClearAllFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClearAllFilesActionPerformed
+    private void jMenuItemClearAllFilesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemClearAllFilesActionPerformed
         // TODO add your handling code here:
         this.fileLoadPanel2.clearAllFiles();
-    }//GEN-LAST:event_jMenuItemClearAllFilesActionPerformed
+    }// GEN-LAST:event_jMenuItemClearAllFilesActionPerformed
 
     private void jMenuItemImportFASTAActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemImportFASTAActionPerformed
         // mainFrame just asks fileLoadPanel to do something
@@ -169,7 +191,8 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GVJ.app.fileLoadPanel fileLoadPanel2;
+    private GVJ.gui.basicStatistics basicStatistics1;
+    private GVJ.gui.fileLoadPanel fileLoadPanel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -177,7 +200,6 @@ public class mainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemImportFASTA;
     private javax.swing.JMenuItem jMenuItemImportGFF;
     private javax.swing.JTabbedPane jTabbedPane;
-    private GVJ.app.SequenceViewer sequenceViewer1;
-    private GVJ.app.SequenceViewer sequenceViewer3;
+    private GVJ.gui.SequenceViewer sequenceViewer1;
     // End of variables declaration//GEN-END:variables
 }

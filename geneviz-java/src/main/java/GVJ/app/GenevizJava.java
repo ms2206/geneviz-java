@@ -4,6 +4,8 @@
 
 package GVJ.app;
 
+import GVJ.gui.mainFrame;
+
 /**
  *
  * @author mspriggs

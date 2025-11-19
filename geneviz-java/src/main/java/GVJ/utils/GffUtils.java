@@ -4,6 +4,7 @@
  */
 package GVJ.utils;
 
+import java.util.List;
 import java.util.Stack;
 import org.biojava.nbio.genome.parsers.gff.FeatureI;
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
@@ -13,7 +14,7 @@ import org.biojava.nbio.genome.parsers.gff.Location;
  *
  * @author mspriggs
  */
-public class GffStatistics {
+public class GffUtils {
 
     /**
      * Calculate the average number of exons per gene
@@ -70,6 +71,24 @@ public class GffStatistics {
     public static double averageGeneLength(FeatureList features) {
         // Logic here
         return 0;
+    }
+
+    /**
+     * Get all gene IDs from the feature list
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @return List of all gene IDs
+     */
+    public static List<String> getAllGeneIds(FeatureList features) {
+        List<String> geneIds = new java.util.ArrayList<>();
+        FeatureList geneFeatures = features.selectByType("gene");
+        for (FeatureI gene : geneFeatures) {
+            String id = gene.getAttribute("ID");
+            if (id != null) {
+                geneIds.add(id);
+            }
+        }
+        return geneIds;
     }
 
 }
