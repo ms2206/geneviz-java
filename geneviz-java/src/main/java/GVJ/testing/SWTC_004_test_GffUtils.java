@@ -33,7 +33,7 @@ public class SWTC_004_test_GffUtils {
         // averageGeneLength
         // test_averageGeneLength();
         // getAllGeneIds
-        test_getAllGeneIds();
+        // test_getAllGeneIds();
     }
 
     private static void test_getAverageExonsPerGene() throws IOException {
