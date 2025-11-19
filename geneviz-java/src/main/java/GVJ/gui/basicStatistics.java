@@ -15,7 +15,7 @@ import org.checkerframework.checker.units.qual.t;
 import GVJ.models.DataManager;
 
 import static GVJ.utils.GffUtils.getAllGeneIds;
-import static GVJ.utils.GffUtils.getAverageFeaturesPerGene;
+import static GVJ.utils.GffUtils.countFeaturesInGene;
 
 /**
  *
@@ -388,7 +388,7 @@ public class basicStatistics extends javax.swing.JPanel {
                 // Refresh Feature Selector ComboBox
                 // TODO make this dynamic based on GFF content: Add to tech debt log
 
-                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");                         "stop_codon");
+                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
                 jComboBoxgetFeature.removeAllItems(); // Clear existing items
                 jComboBoxgetFeature.setEditable(true); // Make it editable for typing search
                 for (String featureType : featureTypes) {
@@ -399,10 +399,10 @@ public class basicStatistics extends javax.swing.JPanel {
         private void setAvgNumByGene(String selectedGene, String selectedFeature) {
                 FeatureList gff = dataManager.getGffData();
                 if (selectedGene.equals("Select All")) {
-                        double avgNumFeaturesPerGene = getAverageFeaturesPerGene(gff, selectedFeature);
+                        double avgNumFeaturesPerGene = countFeaturesInGene(gff, selectedFeature);
                         jTextFieldAvgNumByGene.setText(String.format("%.2f", avgNumFeaturesPerGene));
                 } else {
-                        double avgNumFeaturesPerGene = getAverageFeaturesPerGene(gff, selectedFeature, selectedGene);
+                        double avgNumFeaturesPerGene = countFeaturesInGene(gff, selectedFeature, selectedGene);
                         jTextFieldAvgNumByGene.setText(String.format("%.2f", avgNumFeaturesPerGene));
                 }
         }

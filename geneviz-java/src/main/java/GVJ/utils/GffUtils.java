@@ -9,6 +9,7 @@ import java.util.Stack;
 import org.biojava.nbio.genome.parsers.gff.FeatureI;
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
 import org.biojava.nbio.genome.parsers.gff.Location;
+import org.checkerframework.checker.units.qual.g;
 
 /**
  *
@@ -17,17 +18,17 @@ import org.biojava.nbio.genome.parsers.gff.Location;
 public class GffUtils {
 
     /**
-     * Calculate the average number of Features per gene
+     * Calculate the average number of Features per all genes
      * 
      * @param features The FeatureList from a parsed GFF file
      * @param Feature  to consider (e.g., "exon")
      * @return The average number of $features per all genes
      */
-    public static double getAverageFeaturesPerGene(FeatureList features, String type) {
+    public static double countFeaturesInGene(FeatureList features, String type) {
 
         // Select by type
         FeatureList selectedFeatures = features.selectByType(type);
-        int featureCount = selectedFeatures.size(); // 3
+        int featureCount = selectedFeatures.size(); // 5
 
         FeatureList geneFeatures = features.selectByType("gene");
         int geneCount = geneFeatures.size(); // 1
@@ -40,31 +41,34 @@ public class GffUtils {
 
     }
 
-    // misleading method name since I can't get an average of just one gene.
-    // Overload from getAverageFeaturesPerGene.
     /**
-     * Calculate the average number of Features per gene
+     * Calculate the number of Features per gene given a gene ID
      * 
      * @param features The FeatureList from a parsed GFF file
      * @param Feature  to consider (e.g., "exon")
      * @param geneId   The gene ID to filter by
-     * @return The number of $features per $geneId
+     * @return The number of $features in $geneId
      */
 
-    public static double getAverageFeaturesPerGene(FeatureList features, String type, String geneId) {
+    public static double countFeaturesInGene(FeatureList features, String type, String geneId) {
+
         // Select by type
-        FeatureList exonFeatures = features.selectByType(type);
-        int exonCount = exonFeatures.size();
+        FeatureList typeSpecificFeatures = features.selectByType(type);
+        FeatureList featuresGroupedByGene = new FeatureList();
 
-        FeatureList geneFeatures = features.selectByType("gene").selectByAttribute("ID", geneId);
-        int geneCount = geneFeatures.size();
+        // Filter by Parent attribute
+        for (FeatureI feature : typeSpecificFeatures) {
 
-        try {
-            return (double) exonCount / geneCount;
-        } catch (ArithmeticException e) {
-            return 0;
+            String parent = feature.getAttribute("Parent");
+
+            if (parent != null && parent.startsWith(geneId + ".")) {
+                featuresGroupedByGene.add(feature);
+            } else {
+                continue;
+            }
         }
 
+        return featuresGroupedByGene.size();
     }
 
     /**
