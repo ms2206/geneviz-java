@@ -5,7 +5,9 @@
 package GVJ.testing;
 
 import GVJ.io.GffParser;
-import static GVJ.utils.GffUtils.getAverageFeaturesPerGene;
+
+import static GVJ.utils.GffUtils.countFeaturesAccrossAllGenes;
+import static GVJ.utils.GffUtils.countFeaturesInGene;
 import static GVJ.utils.GffUtils.getAllGeneIds;
 
 import java.io.File;
@@ -33,7 +35,9 @@ public class SWTC_004_test_GffUtils {
         // averageGeneLength
         // test_averageGeneLength();
         // getAllGeneIds
-        // test_getAllGeneIds();
+        test_getAllGeneIds();
+        // test test_countFeaturesInGene
+        // test_countFeaturesInGene();
     }
 
     private static void test_getAverageExonsPerGene() throws IOException {
@@ -48,7 +52,7 @@ public class SWTC_004_test_GffUtils {
         try {
             FeatureList gff3 = parser.parse(file);
 
-            double avgExons = getAverageFeaturesPerGene(gff3, "exons");
+            double avgExons = countFeaturesAccrossAllGenes(gff3, "exons");
             System.out.println("Average exons per gene: " + avgExons);
 
         } catch (Exception e) {
@@ -69,10 +73,14 @@ public class SWTC_004_test_GffUtils {
     private static void test_getAllGeneIds() {
         // get filename
         String filepath = "geneviz-java/src/main/java/GVJ/data/RiAB_ragtag_HiC.gff";
+        // String filepath = "geneviz-java/src/main/java/GVJ/data/test.gtf";
+
         // create File object
         File file = new File(filepath);
         // get GffParser for GFF3
         GffParser parser = GffParser.getParser(3);
+        // GffParser parser = GffParser.getParser(2);
+
         // parse the file
         try {
             FeatureList gff3 = parser.parse(file);
@@ -81,6 +89,36 @@ public class SWTC_004_test_GffUtils {
             for (String id : geneIds) {
                 System.out.println("Gene ID: " + id);
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void test_countFeaturesInGene() {
+        // get filename
+        // String filepath = "geneviz-java/src/main/java/GVJ/data/test.gff";
+        // String filepath = "geneviz-java/src/main/java/GVJ/data/test.gtf";
+        String filepath = "geneviz-java/src/main/java/GVJ/data/RiAB_ragtag_HiC.gff";
+        // String filepath = "geneviz-java/src/main/java/GVJ/data/RiAB_ragtag_HiC.gtf";
+
+        // create File object
+        File file = new File(filepath);
+        // get GffParser for GFF3
+        GffParser parser = GffParser.getParser(3);
+        // parse the file
+        try {
+            FeatureList gff3 = parser.parse(file);
+
+            System.out.println("Counting exons in All genes:");
+            double avgExons = countFeaturesAccrossAllGenes(gff3, "exon");
+            System.out.println("Average exons per gene: " + avgExons);
+
+            String testGeneId = "jg10174";
+            System.out.println("Counting exons in gene: " + testGeneId);
+            double exonCountInGene = countFeaturesInGene(gff3, "exon", testGeneId);
+            System.out.println("Exon count in " + testGeneId + ": " + exonCountInGene);
 
         } catch (Exception e) {
             e.printStackTrace();
