@@ -607,7 +607,7 @@ public class basicStatistics extends javax.swing.JPanel {
                 double avgSeqLen = sequencesGetAverageLength(sequences, true);
 
                 // update jTextFieldAvgSeqLen
-                jTextFieldAvgSeqLen.setText(String.format("%.2f bp", avgSeqLen));
+                jTextFieldAvgSeqLen.setText(String.format("%.2f Mbp", avgSeqLen));
 
         }
 
