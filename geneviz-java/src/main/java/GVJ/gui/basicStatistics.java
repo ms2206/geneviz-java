@@ -63,6 +63,7 @@ public class basicStatistics extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -97,11 +98,11 @@ public class basicStatistics extends javax.swing.JPanel {
                         }
                 });
 
-                jLabelTotalSeqLen.setText("Total Sequence Length:");
+                jLabelTotalSeqLen.setText("Total Sequence Length (Mbp):");
 
                 jLabelNumSeq.setText("Number of Sequences:");
 
-                jLabelAvgSeqLen.setText("Average Sequence Length:");
+                jLabelAvgSeqLen.setText("Average Sequence Length (Mbp):");
 
                 jLabelGCcont.setText("GC Count:");
 
@@ -113,11 +114,7 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                 .addGap(32, 32, 32)
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createParallelGroup(
-                                                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                                .addComponent(jLabelNumSeq)
-                                                                                                .addComponent(jLabelTotalSeqLen))
+                                                                                .addComponent(jLabelTotalSeqLen)
                                                                                 .addGroup(jPanel1Layout
                                                                                                 .createSequentialGroup()
                                                                                                 .addGap(3, 3, 3)
@@ -125,7 +122,8 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                                                                 .createParallelGroup(
                                                                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
                                                                                                                 .addComponent(jLabelAvgSeqLen)
-                                                                                                                .addComponent(jLabelGCcont))))
+                                                                                                                .addComponent(jLabelGCcont)
+                                                                                                                .addComponent(jLabelNumSeq))))
                                                                 .addGap(38, 38, 38)
                                                                 .addGroup(jPanel1Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +143,7 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                 199,
                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addContainerGap(91, Short.MAX_VALUE)));
+                                                                .addContainerGap(54, Short.MAX_VALUE)));
                 jPanel1Layout.setVerticalGroup(
                                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -583,11 +581,12 @@ public class basicStatistics extends javax.swing.JPanel {
                 int totalLen = 0;
                 for (DNASequence sequence : sequences.values()) {
                         int seqLen = getSequenceLength(sequence);
+                        System.out.println("Sequence Length: " + seqLen); // Debugging line
                         totalLen += seqLen;
                 }
 
                 double totalLenMbs = bp2Mbp((double) totalLen);
-                jTextFieldTotalSeqLen.setText(Integer.toString((int) totalLenMbs));
+                jTextFieldTotalSeqLen.setText(Double.toString(totalLenMbs));
 
         }
 
