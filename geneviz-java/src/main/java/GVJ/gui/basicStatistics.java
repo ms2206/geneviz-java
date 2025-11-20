@@ -21,6 +21,7 @@ import static GVJ.utils.FastaUtils.getSequenceLength;
 import static GVJ.utils.FastaUtils.getSequenceGCcount;
 import static GVJ.utils.FastaUtils.sequencesGetAverageLength;
 import static GVJ.utils.FastaUtils.bp2Mbp;
+import static GVJ.utils.FastaUtils.getNumberOfSequences;
 
 import static GVJ.utils.GffUtils.getAllGeneIds;
 import static GVJ.utils.GffUtils.countFeaturesAccrossAllGenes;
@@ -592,8 +593,12 @@ public class basicStatistics extends javax.swing.JPanel {
         }
 
         private void updateNumSeq() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                               // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                Map<String, DNASequence> sequences = dataManager.getFastaData();
+                int numSeq = getNumberOfSequences(sequences);
+
+                // update jTextFieldNumSeq
+                jTextFieldNumSeq.setText(Integer.toString(numSeq));
+
         }
 
         private void updateAvgSeqLen() {

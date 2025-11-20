@@ -84,7 +84,7 @@ public class FastaUtils {
         return basePairs / 1000000.0;
     }
 
-    private static int getNumberOfSequences(Map<String, DNASequence> fastaMap) {
+    public static int getNumberOfSequences(Map<String, DNASequence> fastaMap) {
         return fastaMap.size();
     }
 
