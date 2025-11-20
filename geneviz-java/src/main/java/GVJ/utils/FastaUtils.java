@@ -72,12 +72,37 @@ public class FastaUtils {
      * Wrapper to getGCCount() of a FASTA sequence from a DNASequence object.
      * --- slightly unnecessary but keeps statistics functions together ---
      */
-    public static double getSequenceGCcount(DNASequence fastaSequence) {
+    private static double getSequenceGCcount(DNASequence fastaSequence) {
 
         // getGCCount
-        int gcCount = fastaSequence.getGCCount();
+        double gcCount = fastaSequence.getGCCount();
 
         return gcCount;
+    }
+
+    /*
+     * Get average GC count of sequences in a FASTA map
+     * 
+     * @param fastaMap Map of sequence identifiers and DNASequence objects
+     * 
+     * @return The average GC count of the sequences
+     * 
+     */
+    public static double getAverageGCCount(Map<String, DNASequence> fastaMap) {
+
+        int totalGCcount = 0;
+
+        for (DNASequence seq : fastaMap.values()) {
+            double gcCount = getSequenceGCcount(seq);
+            totalGCcount += gcCount;
+        }
+        ;
+        try {
+            double averageGCcount = (double) totalGCcount / fastaMap.size();
+            return averageGCcount;
+        } catch (ArithmeticException e) {
+            return 0;
+        }
     }
 
     public static double bp2Mbp(double basePairs) {
