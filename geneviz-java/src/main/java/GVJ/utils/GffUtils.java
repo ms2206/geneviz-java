@@ -24,7 +24,7 @@ public class GffUtils {
      * @param Feature  to consider (e.g., "exon")
      * @return The average number of $features per all genes
      */
-    public static double countFeaturesInGene(FeatureList features, String type) {
+    public static double countFeaturesAccrossAllGenes(FeatureList features, String type) {
 
         // Select by type
         FeatureList selectedFeatures = features.selectByType(type);
@@ -60,8 +60,9 @@ public class GffUtils {
         for (FeatureI feature : typeSpecificFeatures) {
 
             String parent = feature.getAttribute("Parent");
+            String geneIdFromParent = parent.split("\\.")[0];
 
-            if (parent != null && parent.startsWith(geneId + ".")) {
+            if (parent != null && geneIdFromParent.equals(geneId)) {
                 featuresGroupedByGene.add(feature);
             } else {
                 continue;
@@ -72,25 +73,99 @@ public class GffUtils {
     }
 
     /**
-     * Find the longest and shortest feature in the FeatureList
+     * Find the length of the longest feature in the FeatureList.
      * 
      * @param features The FeatureList from a parsed GFF file
      * @param type     The type of feature to consider (e.g., "gene", "exon")
-     * @return A FeatureList containing the longest and shortest features
+     * @return A int containing the longest feature length
      */
-    public static FeatureList longestShortestFeatures(FeatureList features, String type) {
+    public static int longestFeature(FeatureList features, String type) {
 
         FeatureList selectedFeature = features.selectByType(type);
 
         if (selectedFeature.isEmpty()) {
-            return new FeatureList();
+            return 0;
+        }
+        // Find longest feature
+        int maxLength = 0;
+        for (FeatureI feature : selectedFeature) {
+            System.out.println("Feature: " + feature);
+            Location loc = feature.location();
+            int length = loc.length();
+            if (length > maxLength) {
+                maxLength = length;
+            }
+        }
+        System.out.println("Max length: " + maxLength);
+        return maxLength;
+
+    }
+
+    /**
+     * Find the length of the longest feature in the FeatureList from a specific
+     * gene.
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param type     The type of feature to consider (e.g., "gene", "exon")
+     * @param geneId   The gene ID to filter by
+     * @return A int containing the longest feature length
+     */
+    public static int longestFeature(FeatureList features, String type, String geneId) {
+
+        FeatureList selectedFeature = features.selectByType(type);
+        FeatureList featuresInGene = new FeatureList();
+        // Filter by Parent attribute
+        for (FeatureI feature : selectedFeature) {
+            String parent = feature.getAttribute("Parent");
+            // Extract gene ID from Parent attribute
+            String geneIdFromParent = parent.split("\\.")[0];
+            System.out.println("Gene ID from Parent: " + geneIdFromParent);
+
+            if (parent != null && geneIdFromParent.equals(geneId)) {
+                // if extracted gene ID matches input geneId, add to featuresInGene
+                featuresInGene.add(feature);
+            } else {
+                continue;
+            }
         }
 
-        FeatureList result = new FeatureList();
+        if (featuresInGene.isEmpty()) {
+            return 0;
+        } else {
+            // Find longest feature of the filtered features
+            int maxLength = 0;
+            maxLength = longestFeature(featuresInGene, type);
+            // return maxLength;
+            return maxLength;
 
+        }
+    }
+
+    /**
+     * Find the length of the shortest feature in the FeatureList.
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param type     The type of feature to consider (e.g., "gene", "exon")
+     * @return A int containing the shortest feature length
+     */
+    public static int shortestFeature(FeatureList features, String type) {
+
+        FeatureList selectedFeature = features.selectByType(type);
+
+        if (selectedFeature.isEmpty()) {
+            return 0;
+        }
         // Find longest feature
+        int minLength = 0;
+        for (FeatureI feature : selectedFeature) {
+            Location loc = feature.location();
+            int length = loc.length();
+            if (length < minLength) {
+                minLength = length;
+            }
+        }
 
-        return null;
+        return minLength;
 
     }
 
@@ -110,6 +185,9 @@ public class GffUtils {
      * 
      * @param features The FeatureList from a parsed GFF file
      * @return List of all gene IDs
+     * 
+     *         #TODO: Currently only works for GFF3 files, implement GTF support
+     *         TECDEBT minimal viable product. type gene is not in GTF files I have.
      */
     public static List<String> getAllGeneIds(FeatureList features) {
         List<String> geneIds = new java.util.ArrayList<>();
