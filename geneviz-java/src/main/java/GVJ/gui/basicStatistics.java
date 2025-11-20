@@ -17,8 +17,10 @@ import org.biojava.nbio.genome.parsers.gff.FeatureList;
 import org.checkerframework.checker.units.qual.t;
 
 import GVJ.models.DataManager;
-import static GVJ.utils.FastaStatistics.getSequenceLength;
-import static GVJ.utils.FastaUtils.
+import static GVJ.utils.FastaUtils.getSequenceLength;
+import static GVJ.utils.FastaUtils.getSequenceGCcount;
+import static GVJ.utils.FastaUtils.sequencesGetAverageLength;
+import static GVJ.utils.FastaUtils.bp2Mbp;
 
 import static GVJ.utils.GffUtils.getAllGeneIds;
 import static GVJ.utils.GffUtils.countFeaturesAccrossAllGenes;
@@ -60,6 +62,7 @@ public class basicStatistics extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -87,6 +90,12 @@ public class basicStatistics extends javax.swing.JPanel {
                 jButtonUpdate = new javax.swing.JButton();
                 jLabelShortestFeature = new javax.swing.JLabel();
                 jTextFieldShortestFeature = new javax.swing.JTextField();
+
+                jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+                        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                                jTabbedPane1StateChanged(evt);
+                        }
+                });
 
                 jLabelTotalSeqLen.setText("Total Sequence Length:");
 
@@ -331,6 +340,15 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                 .addContainerGap(63, Short.MAX_VALUE)));
         }// </editor-fold>//GEN-END:initComponents
 
+        private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {// GEN-FIRST:event_jTabbedPane1StateChanged
+                int selectedIndex = jTabbedPane1.getSelectedIndex();
+                if (selectedIndex == 1) { // FASTA Statistics tab
+                        refreshFASTAStats();
+                } else if (selectedIndex == 2) { // GFF Statistics tab
+                        refreshComboBoxs();
+                }
+        }// GEN-LAST:event_jTabbedPane1StateChanged
+
         private void jTextFieldAvgNumByGeneActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFieldAvgNumByGeneActionPerformed
                 // TODO add your handling code here:
         }// GEN-LAST:event_jTextFieldAvgNumByGeneActionPerformed
@@ -390,7 +408,6 @@ public class basicStatistics extends javax.swing.JPanel {
 
         public void refreshFASTAStats() {
                 // Calculate and display FASTA statistics
-
                 // update total sequence length
                 updateTotalSeqLen();
 

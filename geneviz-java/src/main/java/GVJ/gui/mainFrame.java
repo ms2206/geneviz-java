@@ -182,6 +182,7 @@ public class mainFrame extends javax.swing.JFrame {
         int selectedIndex = jTabbedPane.getSelectedIndex();
         if (selectedIndex == 1) { // Basic Statistics tab
             basicStatistics1.refreshComboBoxs(); // GFF and FASTA data may have changed
+            basicStatistics1.refreshFASTAStats(); // Update FASTA statistics display
         }
     }// GEN-LAST:event_jTabbedPaneStateChanged
 

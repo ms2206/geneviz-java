@@ -80,7 +80,7 @@ public class FastaUtils {
         return gcCount;
     }
 
-    private static double bp2Mbp(double basePairs) {
+    public static double bp2Mbp(double basePairs) {
         return basePairs / 1000000.0;
     }
 
