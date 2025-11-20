@@ -617,8 +617,10 @@ public class basicStatistics extends javax.swing.JPanel {
 
                 double gcContent = getAverageGCCount(sequences);
 
+                String formattedgcContent = String.format(".2f %%", gcContent);
+
                 // update jTextFieldGCcont
-                jTextFieldGCcont.setText(String.format("%.2f %%", gcContent));
+                jTextFieldGCcont.setText(String.format("%.2f %%", formattedgcContent));
         }
 
 }
