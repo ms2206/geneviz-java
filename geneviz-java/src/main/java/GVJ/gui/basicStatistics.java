@@ -519,7 +519,7 @@ public class basicStatistics extends javax.swing.JPanel {
 
                                 // update jLabelAvgNumByGene to reflect selected gene
                                 jLabelShortestFeature.setText(
-                                                "Longest " + selectedFeature + " in " + selectedGene + ":");
+                                                "Shortest " + selectedFeature + " in " + selectedGene + ":");
                         }
 
                 } catch (NullPointerException e) {
