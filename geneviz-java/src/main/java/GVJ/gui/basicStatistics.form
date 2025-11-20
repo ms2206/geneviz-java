@@ -51,45 +51,35 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboBoxSeqSelector" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelChoosSeq" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="jLabelNumSeq" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelTotalSeqLen" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jLabelNumSeq" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelTotalSeqLen" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelAvgSeqLen" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabelGCcont" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldNumSeq" min="-2" pref="199" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalSeqLen" min="-2" pref="199" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldAvgSeqLen" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldGCcont" min="-2" pref="199" max="-2" attributes="0"/>
+                                  <Component id="jLabelAvgSeqLen" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelGCcont" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="92" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextFieldNumSeq" min="-2" pref="199" max="-2" attributes="0"/>
+                          <Component id="jTextFieldTotalSeqLen" min="-2" pref="199" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAvgSeqLen" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
+                          <Component id="jTextFieldGCcont" min="-2" pref="199" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
-                      <Component id="jLabelChoosSeq" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBoxSeqSelector" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabelTotalSeqLen" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldTotalSeqLen" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -104,40 +94,17 @@
                           <Component id="jLabelAvgSeqLen" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldAvgSeqLen" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextFieldGCcont" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelGCcont" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldGCcont" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace pref="76" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBoxSeqSelector">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSeqSelectorActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelChoosSeq">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Select Sequence:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabelTotalSeqLen">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Total Sequence Length:"/>
@@ -159,24 +126,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldTotalSeqLen">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField1"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldNumSeq">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField2"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAvgSeqLen">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldGCcont">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField4"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

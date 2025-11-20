@@ -54,315 +54,198 @@ public class basicStatistics extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                jTabbedPane1 = new javax.swing.JTabbedPane();
-                jPanel1 = new javax.swing.JPanel();
-                jComboBoxSeqSelector = new javax.swing.JComboBox<>();
-                jLabelChoosSeq = new javax.swing.JLabel();
-                jLabelTotalSeqLen = new javax.swing.JLabel();
-                jLabelNumSeq = new javax.swing.JLabel();
-                jLabelAvgSeqLen = new javax.swing.JLabel();
-                jLabelGCcont = new javax.swing.JLabel();
-                jTextFieldTotalSeqLen = new javax.swing.JTextField();
-                jTextFieldNumSeq = new javax.swing.JTextField();
-                jTextFieldAvgSeqLen = new javax.swing.JTextField();
-                jTextFieldGCcont = new javax.swing.JTextField();
-                jPanel2 = new javax.swing.JPanel();
-                jLabelSelectGene = new javax.swing.JLabel();
-                jComboBoxSelectGene = new javax.swing.JComboBox<>();
-                jLabelgetFeature = new javax.swing.JLabel();
-                jComboBoxgetFeature = new javax.swing.JComboBox<>();
-                jLabelAvgNumByGene = new javax.swing.JLabel();
-                jTextFieldAvgNumByGene = new javax.swing.JTextField();
-                jLabelLongestFeature = new javax.swing.JLabel();
-                jTextFieldLongestFeature = new javax.swing.JTextField();
-                jLabelAvgFeatureLength = new javax.swing.JLabel();
-                jTextFieldAvgFeatureLength = new javax.swing.JTextField();
-                jButtonUpdate = new javax.swing.JButton();
-                jLabelShortestFeature = new javax.swing.JLabel();
-                jTextFieldShortestFeature = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelTotalSeqLen = new javax.swing.JLabel();
+        jLabelNumSeq = new javax.swing.JLabel();
+        jLabelAvgSeqLen = new javax.swing.JLabel();
+        jLabelGCcont = new javax.swing.JLabel();
+        jTextFieldTotalSeqLen = new javax.swing.JTextField();
+        jTextFieldNumSeq = new javax.swing.JTextField();
+        jTextFieldAvgSeqLen = new javax.swing.JTextField();
+        jTextFieldGCcont = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelSelectGene = new javax.swing.JLabel();
+        jComboBoxSelectGene = new javax.swing.JComboBox<>();
+        jLabelgetFeature = new javax.swing.JLabel();
+        jComboBoxgetFeature = new javax.swing.JComboBox<>();
+        jLabelAvgNumByGene = new javax.swing.JLabel();
+        jTextFieldAvgNumByGene = new javax.swing.JTextField();
+        jLabelLongestFeature = new javax.swing.JLabel();
+        jTextFieldLongestFeature = new javax.swing.JTextField();
+        jLabelAvgFeatureLength = new javax.swing.JLabel();
+        jTextFieldAvgFeatureLength = new javax.swing.JTextField();
+        jButtonUpdate = new javax.swing.JButton();
+        jLabelShortestFeature = new javax.swing.JLabel();
+        jTextFieldShortestFeature = new javax.swing.JTextField();
 
-                jComboBoxSeqSelector.setModel(new javax.swing.DefaultComboBoxModel<>(
-                                new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-                jComboBoxSeqSelector.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jComboBoxSeqSelectorActionPerformed(evt);
-                        }
-                });
+        jLabelTotalSeqLen.setText("Total Sequence Length:");
 
-                jLabelChoosSeq.setText("Select Sequence:");
+        jLabelNumSeq.setText("Number of Sequences:");
 
-                jLabelTotalSeqLen.setText("Total Sequence Length:");
+        jLabelAvgSeqLen.setText("Average Sequence Length:");
 
-                jLabelNumSeq.setText("Number of Sequences:");
+        jLabelGCcont.setText("GC Count:");
 
-                jLabelAvgSeqLen.setText("Average Sequence Length:");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabelNumSeq)
+                        .addComponent(jLabelTotalSeqLen))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAvgSeqLen)
+                            .addComponent(jLabelGCcont))))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldNumSeq, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTotalSeqLen, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAvgSeqLen, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldGCcont, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTotalSeqLen)
+                    .addComponent(jTextFieldTotalSeqLen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNumSeq)
+                    .addComponent(jTextFieldNumSeq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelAvgSeqLen)
+                    .addComponent(jTextFieldAvgSeqLen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGCcont)
+                    .addComponent(jTextFieldGCcont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
 
-                jLabelGCcont.setText("GC Count:");
+        jTabbedPane1.addTab("FASTA", jPanel1);
 
-                jTextFieldTotalSeqLen.setText("jTextField1");
+        jLabelSelectGene.setText("Select Gene:");
 
-                jTextFieldNumSeq.setText("jTextField2");
+        jComboBoxSelectGene.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-                jTextFieldAvgSeqLen.setText("jTextField3");
+        jLabelgetFeature.setText("Select Feature:");
 
-                jTextFieldGCcont.setText("jTextField4");
+        jComboBoxgetFeature.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-                javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-                jPanel1.setLayout(jPanel1Layout);
-                jPanel1Layout.setHorizontalGroup(
-                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGap(31, 31, 31)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(jComboBoxSeqSelector,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(jLabelChoosSeq)
-                                                                                .addGroup(jPanel1Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGroup(jPanel1Layout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createParallelGroup(
-                                                                                                                                                javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                                                                                .addComponent(jLabelNumSeq)
-                                                                                                                                .addComponent(jLabelTotalSeqLen))
-                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                .createSequentialGroup()
-                                                                                                                                .addGap(3, 3, 3)
-                                                                                                                                .addGroup(jPanel1Layout
-                                                                                                                                                .createParallelGroup(
-                                                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                                                .addComponent(jLabelAvgSeqLen)
-                                                                                                                                                .addComponent(jLabelGCcont))))
-                                                                                                .addGap(38, 38, 38)
-                                                                                                .addGroup(jPanel1Layout
-                                                                                                                .createParallelGroup(
-                                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                                                .addComponent(jTextFieldNumSeq,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                199,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addComponent(jTextFieldTotalSeqLen,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                199,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addComponent(jTextFieldAvgSeqLen,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                199,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addComponent(jTextFieldGCcont,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                199,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                                .addContainerGap(92, Short.MAX_VALUE)));
-                jPanel1Layout.setVerticalGroup(
-                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addContainerGap(18, Short.MAX_VALUE)
-                                                                .addComponent(jLabelChoosSeq)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jComboBoxSeqSelector,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(33, 33, 33)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(jLabelTotalSeqLen)
-                                                                                .addComponent(jTextFieldTotalSeqLen,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(21, 21, 21)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(jLabelNumSeq)
-                                                                                .addComponent(jTextFieldNumSeq,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(28, 28, 28)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(jLabelAvgSeqLen)
-                                                                                .addComponent(jTextFieldAvgSeqLen,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(18, 18, 18)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(jTextFieldGCcont,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(jLabelGCcont))
-                                                                .addGap(23, 23, 23)));
+        jLabelAvgNumByGene.setText("Average Number of Features:");
 
-                jTabbedPane1.addTab("FASTA", jPanel1);
+        jTextFieldAvgNumByGene.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldAvgNumByGeneActionPerformed(evt);
+            }
+        });
 
-                jLabelSelectGene.setText("Select Gene:");
+        jLabelLongestFeature.setText("Longest Feature:");
 
-                jComboBoxSelectGene.setModel(new javax.swing.DefaultComboBoxModel<>(
-                                new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabelAvgFeatureLength.setText("Average Gene Length:");
 
-                jLabelgetFeature.setText("Select Feature:");
+        jButtonUpdate.setText("Update");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
-                jComboBoxgetFeature.setModel(new javax.swing.DefaultComboBoxModel<>(
-                                new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabelShortestFeature.setText("Shortest Feautre:");
 
-                jLabelAvgNumByGene.setText("Average Number of Features:");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSelectGene)
+                    .addComponent(jComboBoxSelectGene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxgetFeature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelgetFeature)
+                    .addComponent(jButtonUpdate))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelAvgFeatureLength)
+                    .addComponent(jLabelLongestFeature)
+                    .addComponent(jLabelAvgNumByGene)
+                    .addComponent(jTextFieldAvgNumByGene, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTextFieldLongestFeature)
+                    .addComponent(jTextFieldAvgFeatureLength)
+                    .addComponent(jLabelShortestFeature)
+                    .addComponent(jTextFieldShortestFeature))
+                .addContainerGap(126, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSelectGene)
+                    .addComponent(jLabelAvgNumByGene))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxSelectGene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAvgNumByGene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelgetFeature)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxgetFeature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelLongestFeature)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldLongestFeature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButtonUpdate))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelShortestFeature)
+                        .addGap(1, 1, 1)
+                        .addComponent(jTextFieldShortestFeature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17)
+                .addComponent(jLabelAvgFeatureLength)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldAvgFeatureLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
-                jTextFieldAvgNumByGene.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jTextFieldAvgNumByGeneActionPerformed(evt);
-                        }
-                });
+        jTabbedPane1.addTab("Features", jPanel2);
 
-                jLabelLongestFeature.setText("Longest Feature:");
-
-                jLabelAvgFeatureLength.setText("Average Gene Length:");
-
-                jButtonUpdate.setText("Update");
-                jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                jButtonUpdateActionPerformed(evt);
-                        }
-                });
-
-                jLabelShortestFeature.setText("Shortest Feautre:");
-
-                javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-                jPanel2.setLayout(jPanel2Layout);
-                jPanel2Layout.setHorizontalGroup(
-                                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                                .addGap(29, 29, 29)
-                                                                .addGroup(jPanel2Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addComponent(jLabelSelectGene)
-                                                                                .addComponent(jComboBoxSelectGene,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(jComboBoxgetFeature,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(jLabelgetFeature)
-                                                                                .addComponent(jButtonUpdate))
-                                                                .addGap(40, 40, 40)
-                                                                .addGroup(jPanel2Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING,
-                                                                                false)
-                                                                                .addComponent(jLabelAvgFeatureLength)
-                                                                                .addComponent(jLabelLongestFeature)
-                                                                                .addComponent(jLabelAvgNumByGene)
-                                                                                .addComponent(jTextFieldAvgNumByGene,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                237, Short.MAX_VALUE)
-                                                                                .addComponent(jTextFieldLongestFeature)
-                                                                                .addComponent(jTextFieldAvgFeatureLength)
-                                                                                .addComponent(jLabelShortestFeature)
-                                                                                .addComponent(jTextFieldShortestFeature))
-                                                                .addContainerGap(126, Short.MAX_VALUE)));
-                jPanel2Layout.setVerticalGroup(
-                                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                                                .addGap(22, 22, 22)
-                                                                .addGroup(jPanel2Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(jLabelSelectGene)
-                                                                                .addComponent(jLabelAvgNumByGene))
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addGroup(jPanel2Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                                .addComponent(jComboBoxSelectGene,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addComponent(jTextFieldAvgNumByGene,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(18, 18, 18)
-                                                                .addGroup(jPanel2Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel2Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addComponent(jLabelgetFeature)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                .addComponent(jComboBoxgetFeature,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(jPanel2Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addComponent(jLabelLongestFeature)
-                                                                                                .addPreferredGap(
-                                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                .addComponent(jTextFieldLongestFeature,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addGroup(jPanel2Layout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(jPanel2Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(27, 27, 27)
-                                                                                                .addComponent(jButtonUpdate))
-                                                                                .addGroup(jPanel2Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(18, 18, 18)
-                                                                                                .addComponent(jLabelShortestFeature)
-                                                                                                .addGap(1, 1, 1)
-                                                                                                .addComponent(jTextFieldShortestFeature,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addGap(17, 17, 17)
-                                                                .addComponent(jLabelAvgFeatureLength)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jTextFieldAvgFeatureLength,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(19, Short.MAX_VALUE)));
-
-                jTabbedPane1.addTab("Features", jPanel2);
-
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-                this.setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(jTabbedPane1,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                519,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(89, Short.MAX_VALUE)));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(jTabbedPane1,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                314,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(63, Short.MAX_VALUE)));
-        }// </editor-fold>//GEN-END:initComponents
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
         private void jTextFieldAvgNumByGeneActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFieldAvgNumByGeneActionPerformed
                 // TODO add your handling code here:
@@ -452,34 +335,32 @@ public class basicStatistics extends javax.swing.JPanel {
                 // TODO add your handling code here:
         }// GEN-LAST:event_jComboBoxSeqSelectorActionPerformed
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButtonUpdate;
-        private javax.swing.JComboBox<String> jComboBoxSelectGene;
-        private javax.swing.JComboBox<String> jComboBoxSeqSelector;
-        private javax.swing.JComboBox<String> jComboBoxgetFeature;
-        private javax.swing.JLabel jLabelAvgFeatureLength;
-        private javax.swing.JLabel jLabelAvgNumByGene;
-        private javax.swing.JLabel jLabelAvgSeqLen;
-        private javax.swing.JLabel jLabelChoosSeq;
-        private javax.swing.JLabel jLabelGCcont;
-        private javax.swing.JLabel jLabelLongestFeature;
-        private javax.swing.JLabel jLabelNumSeq;
-        private javax.swing.JLabel jLabelSelectGene;
-        private javax.swing.JLabel jLabelShortestFeature;
-        private javax.swing.JLabel jLabelTotalSeqLen;
-        private javax.swing.JLabel jLabelgetFeature;
-        private javax.swing.JPanel jPanel1;
-        private javax.swing.JPanel jPanel2;
-        private javax.swing.JTabbedPane jTabbedPane1;
-        private javax.swing.JTextField jTextFieldAvgFeatureLength;
-        private javax.swing.JTextField jTextFieldAvgNumByGene;
-        private javax.swing.JTextField jTextFieldAvgSeqLen;
-        private javax.swing.JTextField jTextFieldGCcont;
-        private javax.swing.JTextField jTextFieldLongestFeature;
-        private javax.swing.JTextField jTextFieldNumSeq;
-        private javax.swing.JTextField jTextFieldShortestFeature;
-        private javax.swing.JTextField jTextFieldTotalSeqLen;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JComboBox<String> jComboBoxSelectGene;
+    private javax.swing.JComboBox<String> jComboBoxgetFeature;
+    private javax.swing.JLabel jLabelAvgFeatureLength;
+    private javax.swing.JLabel jLabelAvgNumByGene;
+    private javax.swing.JLabel jLabelAvgSeqLen;
+    private javax.swing.JLabel jLabelGCcont;
+    private javax.swing.JLabel jLabelLongestFeature;
+    private javax.swing.JLabel jLabelNumSeq;
+    private javax.swing.JLabel jLabelSelectGene;
+    private javax.swing.JLabel jLabelShortestFeature;
+    private javax.swing.JLabel jLabelTotalSeqLen;
+    private javax.swing.JLabel jLabelgetFeature;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextFieldAvgFeatureLength;
+    private javax.swing.JTextField jTextFieldAvgNumByGene;
+    private javax.swing.JTextField jTextFieldAvgSeqLen;
+    private javax.swing.JTextField jTextFieldGCcont;
+    private javax.swing.JTextField jTextFieldLongestFeature;
+    private javax.swing.JTextField jTextFieldNumSeq;
+    private javax.swing.JTextField jTextFieldShortestFeature;
+    private javax.swing.JTextField jTextFieldTotalSeqLen;
+    // End of variables declaration//GEN-END:variables
 
         private void setLongestFeature(String selectedGene, String selectedFeature) {
                 try {

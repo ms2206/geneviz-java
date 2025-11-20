@@ -6,9 +6,9 @@ package GVJ.testing;
 
 import GVJ.io.FastaParser;
 
-import static GVJ.utils.FastaStatistics.getSequenceGCcount;
-import static GVJ.utils.FastaStatistics.getSequenceLength;
-import static GVJ.utils.FastaStatistics.sequencesGetAverageLength;
+import static GVJ.utils.FastaUtils.getSequenceGCcount;
+import static GVJ.utils.FastaUtils.getSequenceLength;
+import static GVJ.utils.FastaUtils.sequencesGetAverageLength;
 
 import java.io.File;
 import java.util.Map;
