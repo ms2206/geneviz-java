@@ -22,6 +22,8 @@ import static GVJ.utils.GffUtils.countFeaturesAccrossAllGenes;
 import static GVJ.utils.GffUtils.countFeaturesInGene;
 import static GVJ.utils.GffUtils.longestFeature;
 import static GVJ.utils.GffUtils.shortestFeature;
+import static GVJ.utils.GffUtils.averageFeatureLength;
+import static GVJ.utils.GffUtils.getGeneLength;
 
 /**
  *
@@ -50,6 +52,8 @@ public class basicStatistics extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -72,13 +76,13 @@ public class basicStatistics extends javax.swing.JPanel {
                 jComboBoxgetFeature = new javax.swing.JComboBox<>();
                 jLabelAvgNumByGene = new javax.swing.JLabel();
                 jTextFieldAvgNumByGene = new javax.swing.JTextField();
-                jLabelShortestFeature = new javax.swing.JLabel();
-                jTextFieldShortestFeature = new javax.swing.JTextField();
-                jLabelShortestFeature = new javax.swing.JLabel();
-                jTextFieldShortestFeature = new javax.swing.JTextField();
-                jLabel3 = new javax.swing.JLabel();
-                jTextField3 = new javax.swing.JTextField();
+                jLabelLongestFeature = new javax.swing.JLabel();
+                jTextFieldLongestFeature = new javax.swing.JTextField();
+                jLabelAvgFeatureLength = new javax.swing.JLabel();
+                jTextFieldAvgFeatureLength = new javax.swing.JTextField();
                 jButtonUpdate = new javax.swing.JButton();
+                jLabelShortestFeature = new javax.swing.JLabel();
+                jTextFieldShortestFeature = new javax.swing.JTextField();
 
                 jComboBoxSeqSelector.setModel(new javax.swing.DefaultComboBoxModel<>(
                                 new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -215,21 +219,17 @@ public class basicStatistics extends javax.swing.JPanel {
                 jComboBoxgetFeature.setModel(new javax.swing.DefaultComboBoxModel<>(
                                 new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-                jLabelAvgNumByGene.setText("Average Number of $feature per $gene:");
+                jLabelAvgNumByGene.setText("Average Number of Features:");
 
-                jTextFieldAvgNumByGene.setText("jTextField1");
+                jTextFieldAvgNumByGene.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jTextFieldAvgNumByGeneActionPerformed(evt);
+                        }
+                });
 
-                jLabelShortestFeature.setText("Longest $feature per $gene:");
+                jLabelLongestFeature.setText("Longest Feature:");
 
-                jTextFieldShortestFeature.setText("jTextField1");
-
-                jLabelShortestFeature.setText("Shortest $feature per $gene:");
-
-                jTextFieldShortestFeature.setText("jTextField2");
-
-                jLabel3.setText("Average Gene Length:");
-
-                jTextField3.setText("jTextField3");
+                jLabelAvgFeatureLength.setText("Average Gene Length:");
 
                 jButtonUpdate.setText("Update");
                 jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +237,8 @@ public class basicStatistics extends javax.swing.JPanel {
                                 jButtonUpdateActionPerformed(evt);
                         }
                 });
+
+                jLabelShortestFeature.setText("Shortest Feautre:");
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
@@ -261,16 +263,16 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                 .addGroup(jPanel2Layout.createParallelGroup(
                                                                                 javax.swing.GroupLayout.Alignment.LEADING,
                                                                                 false)
-                                                                                .addComponent(jLabel3)
-                                                                                .addComponent(jLabelShortestFeature)
-                                                                                .addComponent(jLabelShortestFeature)
+                                                                                .addComponent(jLabelAvgFeatureLength)
+                                                                                .addComponent(jLabelLongestFeature)
                                                                                 .addComponent(jLabelAvgNumByGene)
                                                                                 .addComponent(jTextFieldAvgNumByGene,
                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                 237, Short.MAX_VALUE)
-                                                                                .addComponent(jTextFieldShortestFeature)
-                                                                                .addComponent(jTextFieldShortestFeature)
-                                                                                .addComponent(jTextField3))
+                                                                                .addComponent(jTextFieldLongestFeature)
+                                                                                .addComponent(jTextFieldAvgFeatureLength)
+                                                                                .addComponent(jLabelShortestFeature)
+                                                                                .addComponent(jTextFieldShortestFeature))
                                                                 .addContainerGap(126, Short.MAX_VALUE)));
                 jPanel2Layout.setVerticalGroup(
                                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,10 +308,10 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                 .addGroup(jPanel2Layout
                                                                                                 .createSequentialGroup()
-                                                                                                .addComponent(jLabelShortestFeature)
+                                                                                                .addComponent(jLabelLongestFeature)
                                                                                                 .addPreferredGap(
                                                                                                                 javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                                .addComponent(jTextFieldShortestFeature,
+                                                                                                .addComponent(jTextFieldLongestFeature,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -317,26 +319,26 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                                 javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addGroup(jPanel2Layout
                                                                                                 .createSequentialGroup()
+                                                                                                .addGap(27, 27, 27)
+                                                                                                .addComponent(jButtonUpdate))
+                                                                                .addGroup(jPanel2Layout
+                                                                                                .createSequentialGroup()
                                                                                                 .addGap(18, 18, 18)
                                                                                                 .addComponent(jLabelShortestFeature)
-                                                                                                .addGap(12, 12, 12)
+                                                                                                .addGap(1, 1, 1)
                                                                                                 .addComponent(jTextFieldShortestFeature,
                                                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGroup(jPanel2Layout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(27, 27, 27)
-                                                                                                .addComponent(jButtonUpdate)))
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel3)
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addGap(17, 17, 17)
+                                                                .addComponent(jLabelAvgFeatureLength)
                                                                 .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jTextField3,
+                                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jTextFieldAvgFeatureLength,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(13, Short.MAX_VALUE)));
+                                                                .addContainerGap(19, Short.MAX_VALUE)));
 
                 jTabbedPane1.addTab("Features", jPanel2);
 
@@ -362,6 +364,10 @@ public class basicStatistics extends javax.swing.JPanel {
                                                                 .addContainerGap(63, Short.MAX_VALUE)));
         }// </editor-fold>//GEN-END:initComponents
 
+        private void jTextFieldAvgNumByGeneActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFieldAvgNumByGeneActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_jTextFieldAvgNumByGeneActionPerformed
+
         private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonUpdateActionPerformed
                 // get selected gene and feature
                 String selectedGene = (String) jComboBoxSelectGene.getSelectedItem();
@@ -375,6 +381,9 @@ public class basicStatistics extends javax.swing.JPanel {
 
                 // update jTextFieldShortestFeature
                 setShortestFeature(selectedGene, selectedFeature);
+
+                // update jTextFieldAvgFeatureLength
+                setAvgFeatureLength(selectedGene, selectedFeature);
 
         }// GEN-LAST:event_jButtonUpdateActionPerformed
 
@@ -413,10 +422,11 @@ public class basicStatistics extends javax.swing.JPanel {
 
         private void setAvgNumByGene(String selectedGene, String selectedFeature) {
                 try {
+
+                        restsTextField(jTextFieldAvgNumByGene, jLabelAvgNumByGene);
+
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
-                                // rests label color in case it was set to red previously
-                                jLabelAvgNumByGene.setForeground(Color.BLACK);
 
                                 // calculate average number of features per gene across all genes
                                 double avgNumFeaturesPerGene = countFeaturesAccrossAllGenes(gff, selectedFeature);
@@ -447,11 +457,12 @@ public class basicStatistics extends javax.swing.JPanel {
         private javax.swing.JComboBox<String> jComboBoxSelectGene;
         private javax.swing.JComboBox<String> jComboBoxSeqSelector;
         private javax.swing.JComboBox<String> jComboBoxgetFeature;
-        private javax.swing.JLabel jLabel3;
+        private javax.swing.JLabel jLabelAvgFeatureLength;
         private javax.swing.JLabel jLabelAvgNumByGene;
         private javax.swing.JLabel jLabelAvgSeqLen;
         private javax.swing.JLabel jLabelChoosSeq;
         private javax.swing.JLabel jLabelGCcont;
+        private javax.swing.JLabel jLabelLongestFeature;
         private javax.swing.JLabel jLabelNumSeq;
         private javax.swing.JLabel jLabelSelectGene;
         private javax.swing.JLabel jLabelShortestFeature;
@@ -460,10 +471,11 @@ public class basicStatistics extends javax.swing.JPanel {
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel2;
         private javax.swing.JTabbedPane jTabbedPane1;
-        private javax.swing.JTextField jTextField3;
+        private javax.swing.JTextField jTextFieldAvgFeatureLength;
         private javax.swing.JTextField jTextFieldAvgNumByGene;
         private javax.swing.JTextField jTextFieldAvgSeqLen;
         private javax.swing.JTextField jTextFieldGCcont;
+        private javax.swing.JTextField jTextFieldLongestFeature;
         private javax.swing.JTextField jTextFieldNumSeq;
         private javax.swing.JTextField jTextFieldShortestFeature;
         private javax.swing.JTextField jTextFieldTotalSeqLen;
@@ -474,36 +486,36 @@ public class basicStatistics extends javax.swing.JPanel {
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
                                 // rests label color in case it was set to red previously
-                                jLabelShortestFeature.setForeground(Color.BLACK);
+                                jLabelLongestFeature.setForeground(Color.BLACK);
 
                                 // calculate longest feature across all genes
                                 int longestFeatureLength = longestFeature(gff, selectedFeature);
-                                jTextFieldShortestFeature.setText(Integer.toString(longestFeatureLength));
+                                jTextFieldLongestFeature.setText(Integer.toString(longestFeatureLength));
 
                                 // update jLabelAvgNumByGene to reflect "all genes"
-                                jLabelShortestFeature.setText("Longest " + selectedFeature + " across all genes:");
+                                jLabelLongestFeature.setText("Longest " + selectedFeature + " across all genes:");
 
                         } else {
                                 // calculate longest feature in selected gene
                                 int longestFeatureLength = longestFeature(gff, selectedFeature, selectedGene);
-                                jTextFieldShortestFeature.setText(Integer.toString(longestFeatureLength));
+                                jTextFieldLongestFeature.setText(Integer.toString(longestFeatureLength));
 
                                 // update jLabelAvgNumByGene to reflect selected gene
-                                jLabelShortestFeature.setText(
+                                jLabelLongestFeature.setText(
                                                 "Longest " + selectedFeature + " in " + selectedGene + ":");
                         }
 
                 } catch (NullPointerException e) {
-                        cannotComputeTextField(jTextFieldShortestFeature, jLabelShortestFeature);
+                        cannotComputeTextField(jTextFieldLongestFeature, jLabelLongestFeature);
                 }
         }
 
         private void setShortestFeature(String selectedGene, String selectedFeature) {
                 try {
+                        restsTextField(jTextFieldShortestFeature, jLabelShortestFeature);
+
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
-                                // rests label color in case it was set to red previously
-                                jLabelShortestFeature.setForeground(Color.BLACK);
 
                                 // calculate shortest feature across all genes
                                 int shortestFeatureLength = shortestFeature(gff, selectedFeature);
@@ -527,11 +539,47 @@ public class basicStatistics extends javax.swing.JPanel {
                 }
         }
 
+        private void setAvgFeatureLength(String selectedGene, String selectedFeature) {
+                try {
+                        restsTextField(jTextFieldAvgFeatureLength, jLabelAvgFeatureLength);
+
+                        FeatureList gff = dataManager.getGffData();
+                        if (selectedGene.equals("Select All")) {
+
+                                // calculate average feature length across all genes
+                                double avgLength = averageFeatureLength(gff, selectedFeature);
+                                jTextFieldAvgFeatureLength.setText(String.format("%.2f", avgLength));
+
+                                // update jLabelAvgNumByGene to reflect "all genes"
+                                jLabelAvgFeatureLength
+                                                .setText("Average " + selectedFeature + " Length across all genes:");
+                        } else {
+                                // calculate average feature length in selected gene
+                                double length = getGeneLength(gff, selectedFeature, selectedGene);
+                                jTextFieldAvgFeatureLength.setText(String.format("%.2f", length));
+
+                                // update jLabelAvgNumByGene to reflect selected gene
+                                jLabelAvgFeatureLength.setText(
+                                                "Average " + selectedFeature + " Length in " + selectedGene + ":");
+                        }
+
+                } catch (NullPointerException e) {
+                        cannotComputeTextField(jTextFieldAvgFeatureLength, jLabelAvgFeatureLength);
+                }
+
+        }
+
         private void cannotComputeTextField(JTextField jTextField, JLabel jLabel) {
                 // TODO Auto-generated method stub
                 jTextField.setText("N/A");
                 jLabel.setText("Value could not be calculated");
                 jLabel.setForeground(Color.RED);
+        }
+
+        private void restsTextField(JTextField jTextField, JLabel jLabel) {
+                // TODO Auto-generated method stub
+                jTextField.setText("");
+                jLabel.setForeground(Color.BLACK);
         }
 
 }
