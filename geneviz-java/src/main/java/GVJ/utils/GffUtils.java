@@ -89,14 +89,12 @@ public class GffUtils {
         // Find longest feature
         int maxLength = 0;
         for (FeatureI feature : selectedFeature) {
-            System.out.println("Feature: " + feature);
             Location loc = feature.location();
             int length = loc.length();
             if (length > maxLength) {
                 maxLength = length;
             }
         }
-        System.out.println("Max length: " + maxLength);
         return maxLength;
 
     }
@@ -155,7 +153,8 @@ public class GffUtils {
             return 0;
         }
         // Find longest feature
-        int minLength = 0;
+        int minLength = Integer.MAX_VALUE;
+
         for (FeatureI feature : selectedFeature) {
             Location loc = feature.location();
             int length = loc.length();
@@ -240,4 +239,80 @@ public class GffUtils {
         return geneIds;
     }
 
+    /**
+     * Get the average gene length from the feature list
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param type     the type of feature to consider (e.g., "gene", "exon")
+     * @return The average gene length
+     */
+
+    public static double averageFeatureLength(FeatureList features, String type) {
+
+        // get genes
+        FeatureList geneFeatures = features.selectByType(type);
+
+        // loop genes and add up lengths
+        int totalLength = 0;
+        for (FeatureI feature : geneFeatures) {
+            int length = feature.location().length();
+            totalLength += length;
+        }
+
+        // divide by count of genes
+        try {
+            return (double) totalLength / geneFeatures.size();
+
+        } catch (ArithmeticException e) {
+            return 0;
+        }
+    }
+
+    /**
+     * Get the length from the feature list from a specific gene.
+     * 
+     * ## pretty sure I've over complicated this one...
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param type     the type of feature to consider (e.g., "gene", "exon")
+     * @param geneId   The gene ID to filter by
+     * @return The average gene length
+     */
+    public static double getGeneLength(FeatureList features, String type, String geneId) {
+
+        FeatureList selectedFeature = features.selectByType(type);
+        FeatureList featuresInGene = new FeatureList();
+
+        String geneIdFromParent = null;
+
+        // set the key based on type
+        String key = (type.equals("gene")) ? "ID" : "Parent";
+
+        // Filter by Parent attribute
+        for (FeatureI feature : selectedFeature) {
+            String parent = feature.getAttribute(key);
+
+            if (key.equals("Parent")) {
+                // Extract gene ID from Parent attribute
+                geneIdFromParent = parent.split("\\.")[0];
+            } else {
+                geneIdFromParent = parent;
+            }
+
+            if (parent != null && geneIdFromParent.equals(geneId)) {
+                // if extracted gene ID matches input geneId, add to featuresInGene
+                featuresInGene.add(feature);
+            } else {
+                continue;
+            }
+        }
+
+        if (featuresInGene.isEmpty()) {
+            return (double) 0;
+        } else {
+            double length = averageFeatureLength(featuresInGene, type);
+            return length;
+        }
+
+    }
 }
