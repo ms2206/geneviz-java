@@ -323,6 +323,7 @@ public class fileLoadPanel extends javax.swing.JPanel {
                 // get correct parser based on file extension
                 if (gffFile.getName().endsWith(".gtf")) {
                     parser = GffParser.getParser(2);
+                    System.out.println("[LOG]: fileLoadPanel: gff2 parser loaded");
                 } else {
                     parser = GffParser.getParser(3);
                 }
