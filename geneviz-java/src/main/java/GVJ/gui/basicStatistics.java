@@ -602,8 +602,13 @@ public class basicStatistics extends javax.swing.JPanel {
         }
 
         private void updateAvgSeqLen() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                               // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                Map<String, DNASequence> sequences = dataManager.getFastaData();
+
+                double avgSeqLen = sequencesGetAverageLength(sequences, true);
+
+                // update jTextFieldAvgSeqLen
+                jTextFieldAvgSeqLen.setText(String.format("%.2f bp", avgSeqLen));
+
         }
 
         private void updateGCcontent() {
