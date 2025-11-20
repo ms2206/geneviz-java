@@ -119,7 +119,6 @@ public class GffUtils {
             String parent = feature.getAttribute("Parent");
             // Extract gene ID from Parent attribute
             String geneIdFromParent = parent.split("\\.")[0];
-            System.out.println("Gene ID from Parent: " + geneIdFromParent);
 
             if (parent != null && geneIdFromParent.equals(geneId)) {
                 // if extracted gene ID matches input geneId, add to featuresInGene
@@ -166,6 +165,46 @@ public class GffUtils {
         }
 
         return minLength;
+
+    }
+
+    /**
+     * Find the length of the shortest feature in the FeatureList from a specific
+     * gene.
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param type     The type of feature to consider (e.g., "gene", "exon")
+     * @param geneId   The gene ID to filter by
+     * @return A int containing the shortest feature length
+     */
+    public static int shortestFeature(FeatureList features, String type, String geneId) {
+
+        FeatureList selectedFeature = features.selectByType(type);
+        FeatureList featuresInGene = new FeatureList();
+        // Filter by Parent attribute
+        for (FeatureI feature : selectedFeature) {
+            String parent = feature.getAttribute("Parent");
+            // Extract gene ID from Parent attribute
+            String geneIdFromParent = parent.split("\\.")[0];
+
+            if (parent != null && geneIdFromParent.equals(geneId)) {
+                // if extracted gene ID matches input geneId, add to featuresInGene
+                featuresInGene.add(feature);
+            } else {
+                continue;
+            }
+        }
+
+        if (featuresInGene.isEmpty()) {
+            return 0;
+        } else {
+            // Find shortest feature of the filtered features
+            int minLength = 0;
+            minLength = shortestFeature(featuresInGene, type);
+            // return minLength;
+            return minLength;
+
+        }
 
     }
 
