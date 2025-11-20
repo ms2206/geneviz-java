@@ -583,7 +583,6 @@ public class basicStatistics extends javax.swing.JPanel {
                 int totalLen = 0;
                 for (DNASequence sequence : sequences.values()) {
                         int seqLen = getSequenceLength(sequence);
-                        System.out.println("Sequence Length: " + seqLen); // Debugging line
                         totalLen += seqLen;
                 }
 
@@ -617,10 +616,11 @@ public class basicStatistics extends javax.swing.JPanel {
 
                 double gcContent = getAverageGCCount(sequences);
 
-                String formattedgcContent = String.format(".2f %%", gcContent);
+                // format gcContent to 2 decimal places
+                String formattedgcContent = String.format("%.2f", gcContent);
 
                 // update jTextFieldGCcont
-                jTextFieldGCcont.setText(String.format("%.2f %%", formattedgcContent));
+                jTextFieldGCcont.setText(formattedgcContent);
         }
 
 }
