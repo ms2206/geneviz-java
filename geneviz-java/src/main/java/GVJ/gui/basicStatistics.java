@@ -586,7 +586,8 @@ public class basicStatistics extends javax.swing.JPanel {
                 }
 
                 double totalLenMbs = bp2Mbp((double) totalLen);
-                jTextFieldTotalSeqLen.setText(Double.toString(totalLenMbs));
+                String formattedTotalLen = String.format("%.2f Mbp", totalLenMbs);
+                jTextFieldTotalSeqLen.setText(formattedTotalLen);
 
         }
 
