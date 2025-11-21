@@ -116,4 +116,17 @@ public class FastaUtils {
         return fastaMap.size();
     }
 
+    /*
+     * Get list of sequence identifiers from a FASTA map
+     *
+     * @param fastaMap Map of sequence identifiers and DNASequence objects
+     * 
+     * @return List of sequence identifiers
+     *
+     */
+    // note: retuall just returning keyset as list
+    public static List<String> getSequenceIdentifiers(Map<String, DNASequence> fastaMap) {
+        return new ArrayList<>(fastaMap.keySet());
+    }
+
 }

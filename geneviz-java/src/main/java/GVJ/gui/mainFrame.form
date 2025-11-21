@@ -144,6 +144,15 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="GVJ.gui.fastaVisualization" name="fastaVisualization1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="FASTA Visualization">
+                <Property name="tabTitle" type="java.lang.String" value="FASTA Visualization"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

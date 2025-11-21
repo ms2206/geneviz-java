@@ -26,42 +26,27 @@ public class mainFrame extends javax.swing.JFrame {
 
         fileLoadPanel2.setDataManager(dataManager); // Pass DataManager to fileLoadPanel
         basicStatistics1.setDataManager(dataManager); // Pass DataManager to basicStatistics panel
+        fastaVisualization1.setDataManager(dataManager); // Pass DataManager
 
         // Disable the Basic Statistics tab until data is loaded
         jTabbedPane.setEnabledAt(1, false);
+        // Disable the FASTA Visualization tab until data is loaded
+        jTabbedPane.setEnabledAt(2, false);
 
         // Use a timer to periodically check if data is loaded
         javax.swing.Timer timer = new javax.swing.Timer(1000, e -> {
             if (dataManager.hasFastaData() && dataManager.hasGffData()) {
                 jTabbedPane.setEnabledAt(1, true);
+                jTabbedPane.setEnabledAt(2, true);
 
             } else {
                 // close tab and disable
                 jTabbedPane.setSelectedIndex(0);
                 jTabbedPane.setEnabledAt(1, false);
+                jTabbedPane.setEnabledAt(2, false);
             }
         });
         timer.start();
-
-        /*
-         * ###########################
-         * TESTING ONLY - DELETE LATER
-         * ###########################
-         */
-        // wait 20 seconds then enable tab
-        // new java.util.Timer().schedule(new java.util.TimerTask() {
-        // @Override
-        // public void run() {
-        // jTabbedPane.setEnabledAt(1, true);
-        // basicStatistics1.refreshComboBoxs();
-        // }
-        // }, 20000);
-
-        /*
-         * ###########################
-         * TESTING ONLY - DELETE LATER
-         * ###########################
-         */
 
     }
 
@@ -77,6 +62,7 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -84,6 +70,7 @@ public class mainFrame extends javax.swing.JFrame {
         fileLoadPanel2 = new GVJ.gui.fileLoadPanel();
         sequenceViewer1 = new GVJ.gui.SequenceViewer();
         basicStatistics1 = new GVJ.gui.basicStatistics();
+        fastaVisualization1 = new GVJ.gui.fastaVisualization();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImportFASTA = new javax.swing.JMenuItem();
@@ -122,6 +109,7 @@ public class mainFrame extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)));
 
         jTabbedPane.addTab("Basic Statistics", sequenceViewer1);
+        jTabbedPane.addTab("FASTA Visualization", fastaVisualization1);
 
         jMenu1.setText("File");
 
@@ -178,12 +166,19 @@ public class mainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * This is an important event - when the user switches tabs need to
+     * refresh data displays
+     */
     private void jTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {// GEN-FIRST:event_jTabbedPaneStateChanged
         int selectedIndex = jTabbedPane.getSelectedIndex();
         if (selectedIndex == 1) { // Basic Statistics tab
-            basicStatistics1.refreshComboBoxs(); // GFF and FASTA data may have changed
+            basicStatistics1.refreshComboBoxs(); // GFF data may have changed
             basicStatistics1.refreshFASTAStats(); // Update FASTA statistics display
+        } else if (selectedIndex == 2) {
+            fastaVisualization1.refreshComboBoxes(); // Update FASTA visualization combo boxes
         }
+
     }// GEN-LAST:event_jTabbedPaneStateChanged
 
     private void jMenuItemImportGFFActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jMenuItemImportGFFActionPerformed
@@ -232,6 +227,7 @@ public class mainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GVJ.gui.basicStatistics basicStatistics1;
+    private GVJ.gui.fastaVisualization fastaVisualization1;
     private GVJ.gui.fileLoadPanel fileLoadPanel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
