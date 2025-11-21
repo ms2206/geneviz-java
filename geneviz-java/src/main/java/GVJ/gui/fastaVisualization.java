@@ -6,10 +6,14 @@ package GVJ.gui;
 
 import GVJ.models.DataManager;
 
+import java.awt.Color;
+import java.io.Console;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
 
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
@@ -21,6 +25,7 @@ import static GVJ.utils.GffUtils.getSequenceIdentifierfromGene;
 import static GVJ.utils.GffUtils.getSelectedFeatureLocations;
 
 import GVJ.models.DataManager;
+import javax.swing.text.BadLocationException;
 import org.biojava.nbio.genome.parsers.gff.Location;
 
 /**
@@ -212,7 +217,12 @@ public class fastaVisualization extends javax.swing.JPanel {
         updateFastaDisplay();
 
         // Highlight selected feature in display
-        highlightFeatures();
+        try {
+            highlightFeatures();
+        } catch (BadLocationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 
@@ -246,9 +256,9 @@ public class fastaVisualization extends javax.swing.JPanel {
         }
 
         // get coordinates from GFF for selected gene
-        int[] coords = getCoordsForGene(gff, selectedGene);
-        int start = coords[0];
-        int end = coords[1];
+        Location coords = getCoordsForGene(gff, selectedGene);
+        int start = coords.bioStart() - 1; // adjust for 0-based index
+        int end = coords.bioEnd();
 
         // get sequence inferred from selected feature
         String seqKey = getSequenceIdentifierfromGene(gff, selectedGene);
@@ -257,25 +267,54 @@ public class fastaVisualization extends javax.swing.JPanel {
         Map<String, DNASequence> fastaMap = dataManager.getFastaData();
         DNASequence dnaSequence = fastaMap.get(seqKey);
         String fullSequence = dnaSequence.getSequenceAsString();
-        String substring = fullSequence.substring(start, end); // Adjust for 0-based index
+        String substring = fullSequence.substring(start - 1, end); // Adjust for 0-based index
 
         jTextAreaFastaDisplay.setText(substring);
     }
 
-    private void highlightFeatures() {
+    private void highlightFeatures() throws BadLocationException {
         // Get features list
         FeatureList gff = dataManager.getGffData();
 
         // Get data from jComboBoxSelectGene
         String selectedGene = (String) jComboBoxSelectGene.getSelectedItem();
+        System.out.println("Selected Gene: " + selectedGene);
+
+        // get coordinates from GFF for selected gene
+        Location coords = getCoordsForGene(gff, selectedGene);
+        int geneStart = coords.bioStart(); // relative to full sequence
+        int geneEnd = coords.bioEnd(); // relative to full sequence
+        int geneLength = coords.length(); // length of gene
+
+        System.out.println("Gene Start: " + geneStart + ", Gene End: " + geneEnd);
 
         // Get data from jComboBoxSelectFeature
         String selectedFeature = (String) jComboBoxSelectFeature.getSelectedItem();
+        System.out.println("Selected Feature: " + selectedFeature);
 
         // Extract a list of Locations for each feature in gene
         List<Location> featureLocations = getSelectedFeatureLocations(gff, selectedGene, selectedFeature);
+        System.out.println("Feature Locations: " + featureLocations);
 
-        System.out.println("Feature Locations Size: " + featureLocations.size());
+        // feature locations are relative to full sequence, need to adjust to relative
+        // to
+        // displayed sequence
+
+        for (Location featureLocation : featureLocations) {
+            int featureStart = featureLocation.bioStart() - geneStart; // relative to displayed sequence
+            int featureEnd = featureStart + featureLocation.length(); // relative to displayed sequence
+            System.out.println("Feature Start: " + featureStart + ", Feature End: " + featureEnd);
+
+            Highlighter highlighter = jTextAreaFastaDisplay.getHighlighter();
+            highlighter.addHighlight(featureStart, featureEnd,
+                    new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
+
+        }
 
     }
+
+    // Highlight each feature in jTextAreaFastaDisplay
+    // StringBuilder highlightedText = new
+    // StringBuilder(jTextAreaFastaDisplay.getText());
+
 }
