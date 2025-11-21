@@ -18,7 +18,7 @@ import org.checkerframework.checker.units.qual.t;
 
 import GVJ.models.DataManager;
 import static GVJ.utils.FastaUtils.getSequenceLength;
-import static GVJ.utils.FastaUtils.getAverageGCCount;
+import static GVJ.utils.FastaUtils.getAverageGCpct;
 import static GVJ.utils.FastaUtils.sequencesGetAverageLength;
 import static GVJ.utils.FastaUtils.bp2Mbp;
 import static GVJ.utils.FastaUtils.getNumberOfSequences;
@@ -429,6 +429,12 @@ public class basicStatistics extends javax.swing.JPanel {
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
 
+                                // Set featurs box to exclude gene
+                                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 // calculate average number of features per gene across all genes
                                 double avgNumFeaturesPerGene = countFeaturesAccrossAllGenes(gff, selectedFeature);
                                 jTextFieldAvgNumByGene.setText(String.format("%.2f", avgNumFeaturesPerGene));
@@ -436,6 +442,13 @@ public class basicStatistics extends javax.swing.JPanel {
                                 // update jLabelAvgNumByGene to reflect "all genes"
                                 jLabelAvgNumByGene.setText("Average Number of " + selectedFeature + "s per all genes:");
                         } else {
+
+                                // Repaint features combo box to remove gene
+                                List<String> featureTypes = Arrays.asList("mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 double avgNumFeaturesPerGene = countFeaturesInGene(gff, selectedFeature, selectedGene);
                                 jTextFieldAvgNumByGene.setText(String.format("%.2f", avgNumFeaturesPerGene));
 
@@ -480,6 +493,13 @@ public class basicStatistics extends javax.swing.JPanel {
                 try {
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
+
+                                // set featurs box to include gene
+                                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 // rests label color in case it was set to red previously
                                 jLabelLongestFeature.setForeground(Color.BLACK);
 
@@ -491,6 +511,12 @@ public class basicStatistics extends javax.swing.JPanel {
                                 jLabelLongestFeature.setText("Longest " + selectedFeature + " across all genes:");
 
                         } else {
+                                // set featurs box to exclude gene
+                                List<String> featureTypes = Arrays.asList("mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 // calculate longest feature in selected gene
                                 int longestFeatureLength = longestFeature(gff, selectedFeature, selectedGene);
                                 jTextFieldLongestFeature.setText(Integer.toString(longestFeatureLength));
@@ -512,6 +538,12 @@ public class basicStatistics extends javax.swing.JPanel {
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
 
+                                // set featurs box to include gene
+                                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 // calculate shortest feature across all genes
                                 int shortestFeatureLength = shortestFeature(gff, selectedFeature);
                                 jTextFieldShortestFeature.setText(Integer.toString(shortestFeatureLength));
@@ -520,6 +552,12 @@ public class basicStatistics extends javax.swing.JPanel {
                                 jLabelShortestFeature.setText("Shortest " + selectedFeature + " across all genes:");
 
                         } else {
+                                // set featurs box to exclude gene
+                                List<String> featureTypes = Arrays.asList("mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 // calculate shortest feature in selected gene
                                 int shortestFeatureLength = shortestFeature(gff, selectedFeature, selectedGene);
                                 jTextFieldShortestFeature.setText(Integer.toString(shortestFeatureLength));
@@ -540,6 +578,11 @@ public class basicStatistics extends javax.swing.JPanel {
 
                         FeatureList gff = dataManager.getGffData();
                         if (selectedGene.equals("Select All")) {
+                                // set featurs box to include gene
+                                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
 
                                 // calculate average feature length across all genes
                                 double avgLength = averageFeatureLength(gff, selectedFeature);
@@ -549,6 +592,12 @@ public class basicStatistics extends javax.swing.JPanel {
                                 jLabelAvgFeatureLength
                                                 .setText("Average " + selectedFeature + " Length across all genes:");
                         } else {
+                                // set featurs box to exclude gene
+                                List<String> featureTypes = Arrays.asList("mRNA", "intron", "exon", "CDS");
+                                removeGenelFromComboBox(jComboBoxgetFeature, featureTypes);
+                                // set jComboBoxgetFeature to selectedFeature
+                                jComboBoxgetFeature.setSelectedItem(selectedFeature);
+
                                 // calculate average feature length in selected gene
                                 double length = getGeneLength(gff, selectedFeature, selectedGene);
                                 jTextFieldAvgFeatureLength.setText(String.format("%.2f", length));
@@ -614,13 +663,21 @@ public class basicStatistics extends javax.swing.JPanel {
         private void updateGCcontent() {
                 Map<String, DNASequence> sequences = dataManager.getFastaData();
 
-                double gcContent = getAverageGCCount(sequences);
+                double gcContent = getAverageGCpct(sequences);
 
                 // format gcContent to 2 decimal places
                 String formattedgcContent = String.format("%.2f", gcContent);
 
                 // update jTextFieldGCcont
-                jTextFieldGCcont.setText(formattedgcContent);
+                jTextFieldGCcont.setText(formattedgcContent + " %");
+        }
+
+        private void removeGenelFromComboBox(javax.swing.JComboBox<String> comboBox, List<String> featureTypes) {
+                comboBox.removeAllItems(); // Clear existing items
+                comboBox.setEditable(true); // Make it editable for typing search
+                for (String featureType : featureTypes) {
+                        comboBox.addItem(featureType);
+                }
         }
 
 }
