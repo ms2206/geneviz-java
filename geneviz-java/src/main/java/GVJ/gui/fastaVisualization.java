@@ -273,6 +273,7 @@ public class fastaVisualization extends javax.swing.JPanel {
     }
 
     private void highlightFeatures() throws BadLocationException {
+
         // Get features list
         FeatureList gff = dataManager.getGffData();
 
@@ -292,6 +293,9 @@ public class fastaVisualization extends javax.swing.JPanel {
         String selectedFeature = (String) jComboBoxSelectFeature.getSelectedItem();
         System.out.println("Selected Feature: " + selectedFeature);
 
+        // set highlight color
+        Color highlightCol = setColor(selectedFeature);
+
         // Extract a list of Locations for each feature in gene
         List<Location> featureLocations = getSelectedFeatureLocations(gff, selectedGene, selectedFeature);
         System.out.println("Feature Locations: " + featureLocations);
@@ -302,19 +306,25 @@ public class fastaVisualization extends javax.swing.JPanel {
 
         for (Location featureLocation : featureLocations) {
             int featureStart = featureLocation.bioStart() - geneStart; // relative to displayed sequence
-            int featureEnd = featureStart + featureLocation.length(); // relative to displayed sequence
+            int featureEnd = featureStart + featureLocation.length() + 1; // relative to displayed sequence
             System.out.println("Feature Start: " + featureStart + ", Feature End: " + featureEnd);
 
             Highlighter highlighter = jTextAreaFastaDisplay.getHighlighter();
             highlighter.addHighlight(featureStart, featureEnd,
-                    new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW));
+                    new DefaultHighlighter.DefaultHighlightPainter(highlightCol));
 
         }
 
     }
 
-    // Highlight each feature in jTextAreaFastaDisplay
-    // StringBuilder highlightedText = new
-    // StringBuilder(jTextAreaFastaDisplay.getText());
+    private Color setColor(String featureType) {
+        return switch (featureType) {
+            case "mRNA" -> new Color(135, 206, 250, 150); // Light Blue
+            case "intron" -> new Color(144, 238, 144, 150); // Light Green
+            case "exon" -> new Color(255, 182, 193, 150); // Light Pink
+            case "CDS" -> new Color(255, 255, 0, 150); // Yellow
+            default -> new Color(211, 211, 211, 150); // Light Gray for unknown types
+        };
+    }
 
 }
