@@ -18,8 +18,10 @@ import static GVJ.utils.FastaUtils.getSequenceIdentifiers;
 import static GVJ.utils.GffUtils.getAllGeneIds;
 import static GVJ.utils.GffUtils.getCoordsForGene;
 import static GVJ.utils.GffUtils.getSequenceIdentifierfromGene;
+import static GVJ.utils.GffUtils.getSelectedFeatureLocations;
 
 import GVJ.models.DataManager;
+import org.biojava.nbio.genome.parsers.gff.Location;
 
 /**
  *
@@ -209,6 +211,9 @@ public class fastaVisualization extends javax.swing.JPanel {
         // Update FASTA DisplayBox
         updateFastaDisplay();
 
+        // Highlight selected feature in display
+        highlightFeatures();
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -247,8 +252,6 @@ public class fastaVisualization extends javax.swing.JPanel {
 
         // get sequence inferred from selected feature
         String seqKey = getSequenceIdentifierfromGene(gff, selectedGene);
-        System.out.println("Sequence Key: " + seqKey);
-        System.out.println("Selected Gene: " + selectedGene);
 
         // Upudate display area
         Map<String, DNASequence> fastaMap = dataManager.getFastaData();
@@ -257,5 +260,22 @@ public class fastaVisualization extends javax.swing.JPanel {
         String substring = fullSequence.substring(start, end); // Adjust for 0-based index
 
         jTextAreaFastaDisplay.setText(substring);
+    }
+
+    private void highlightFeatures() {
+        // Get features list
+        FeatureList gff = dataManager.getGffData();
+
+        // Get data from jComboBoxSelectGene
+        String selectedGene = (String) jComboBoxSelectGene.getSelectedItem();
+
+        // Get data from jComboBoxSelectFeature
+        String selectedFeature = (String) jComboBoxSelectFeature.getSelectedItem();
+
+        // Extract a list of Locations for each feature in gene
+        List<Location> featureLocations = getSelectedFeatureLocations(gff, selectedGene, selectedFeature);
+
+        System.out.println("Feature Locations Size: " + featureLocations.size());
+
     }
 }

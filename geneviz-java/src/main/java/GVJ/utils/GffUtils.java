@@ -345,4 +345,36 @@ public class GffUtils {
         }
         return null; // Gene ID not found
     }
+
+    public static List<Location> getSelectedFeatureLocations(FeatureList features, String selectedGene,
+            String selectedFeature) {
+
+        List<Location> featureLocations = new java.util.ArrayList<>();
+
+        // Filter features on feature
+        FeatureList selectedFeatures = features.selectByType(selectedFeature);
+
+        // filter selectedFeatures on gene ID
+        for (FeatureI feature : selectedFeatures) {
+            System.out.println("Gene Attribute ID: " + feature.getAttribute("ID")); // Debug line
+
+            // if gene then ID else Parent (for everything else)
+            String key = (feature.type().equals("gene")) ? "ID" : "Parent";
+
+            String id = feature.getAttribute(key);
+            String geneId = id.split("\\.")[0];
+
+            if (geneId != null && geneId.equals(selectedGene)) {
+                System.out.println("Matched Gene ID: " + geneId); // Debug line
+                Location loc = feature.location();
+                System.out.println("Feature Location: " + loc); // Debug line
+                featureLocations.add(loc);
+            }
+
+            return featureLocations;
+
+        }
+        return null; // Gene ID not found
+    }
+
 }
