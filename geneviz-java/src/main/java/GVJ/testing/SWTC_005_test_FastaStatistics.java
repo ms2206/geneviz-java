@@ -6,7 +6,7 @@ package GVJ.testing;
 
 import GVJ.io.FastaParser;
 
-import static GVJ.utils.FastaUtils.getAverageGCCount;
+import static GVJ.utils.FastaUtils.getAverageGCpct;
 import static GVJ.utils.FastaUtils.getSequenceLength;
 import static GVJ.utils.FastaUtils.sequencesGetAverageLength;
 
@@ -69,7 +69,7 @@ public class SWTC_005_test_FastaStatistics {
     public static void test_getSequenceGCcount(Map<String, DNASequence> fastaMap) {
         System.out.println("SWTC_005_test_FastaStatistics.test_getSequenceGCcount");
 
-        double gcContent = getAverageGCCount(fastaMap);
+        double gcContent = getAverageGCpct(fastaMap);
         System.out.println("FASTA GC Content (%): " + gcContent);
 
     }

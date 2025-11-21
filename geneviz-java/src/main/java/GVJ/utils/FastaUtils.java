@@ -88,17 +88,20 @@ public class FastaUtils {
      * @return The average GC count of the sequences
      * 
      */
-    public static double getAverageGCCount(Map<String, DNASequence> fastaMap) {
+    public static double getAverageGCpct(Map<String, DNASequence> fastaMap) {
 
         int totalGCcount = 0;
+        int totalLength = 0;
 
         for (DNASequence seq : fastaMap.values()) {
             double gcCount = getSequenceGCcount(seq);
+            double length = getSequenceLength(seq);
             totalGCcount += gcCount;
+            totalLength += length;
         }
         ;
         try {
-            double averageGCcount = (double) totalGCcount / fastaMap.size();
+            double averageGCcount = (double) totalGCcount / totalLength * 100.0;
             return averageGCcount;
         } catch (ArithmeticException e) {
             return 0;
