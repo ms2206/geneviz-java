@@ -316,7 +316,14 @@ public class GffUtils {
 
     }
 
-    public static int[] getCoordsForGene(FeatureList features, String geneId) {
+    /**
+     * Get the start and end coordinates for a given gene ID
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * @param geneId   The gene ID to filter by
+     * @return An int array containing the biostart and bioend coordinates
+     */
+    public static Location getCoordsForGene(FeatureList features, String geneId) {
         FeatureList geneFeatures = features.selectByType("gene");
 
         for (FeatureI gene : geneFeatures) {
@@ -324,9 +331,8 @@ public class GffUtils {
             String id = gene.getAttribute("ID");
             if (id != null && id.equals(geneId)) {
                 Location loc = gene.location();
-                int start = loc.bioStart();
-                int end = loc.bioEnd();
-                return new int[] { start, end };
+                return loc;
+
             }
 
         }
@@ -356,25 +362,25 @@ public class GffUtils {
 
         // filter selectedFeatures on gene ID
         for (FeatureI feature : selectedFeatures) {
-            System.out.println("Gene Attribute ID: " + feature.getAttribute("ID")); // Debug line
 
             // if gene then ID else Parent (for everything else)
             String key = (feature.type().equals("gene")) ? "ID" : "Parent";
 
+            // get ID or Parent from feature
             String id = feature.getAttribute(key);
+
+            // Split to get the gene ID - regardless of type
             String geneId = id.split("\\.")[0];
 
+            // Filter features by gene name and add locations to featureLocations
             if (geneId != null && geneId.equals(selectedGene)) {
-                System.out.println("Matched Gene ID: " + geneId); // Debug line
                 Location loc = feature.location();
-                System.out.println("Feature Location: " + loc); // Debug line
                 featureLocations.add(loc);
+            } else {
+                continue;
             }
-
-            return featureLocations;
-
         }
-        return null; // Gene ID not found
+        return featureLocations;
     }
 
 }
