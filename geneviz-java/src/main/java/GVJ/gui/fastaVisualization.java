@@ -206,9 +206,25 @@ public class fastaVisualization extends javax.swing.JPanel {
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {
 
+        // Update FASTA DisplayBox
+        updateFastaDisplay();
+
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JComboBox<String> jComboBoxSelectFeature;
+    private javax.swing.JComboBox<String> jComboBoxSelectGene;
+    private javax.swing.JLabel jLabelSelectFeature;
+    private javax.swing.JLabel jLabelSelectGene;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaFastaDisplay;
+    // End of variables declaration//GEN-END:variables
+
+    private void updateFastaDisplay() {
         // get selected gene and feature
         String selectedGene = (String) jComboBoxSelectGene.getSelectedItem();
-        String selectedFeature = (String) jComboBoxSelectFeature.getSelectedItem();
 
         // verify selectedGene
         // Get all gene IDs from GFF data
@@ -240,19 +256,6 @@ public class fastaVisualization extends javax.swing.JPanel {
         String fullSequence = dnaSequence.getSequenceAsString();
         String substring = fullSequence.substring(start, end); // Adjust for 0-based index
 
-        System.out.println("Gene: " + selectedFeature + " Start: " + start + " End: " + end);
         jTextAreaFastaDisplay.setText(substring);
-
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBoxSelectFeature;
-    private javax.swing.JComboBox<String> jComboBoxSelectGene;
-    private javax.swing.JLabel jLabelSelectFeature;
-    private javax.swing.JLabel jLabelSelectGene;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaFastaDisplay;
-    // End of variables declaration//GEN-END:variables
 }
