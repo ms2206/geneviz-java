@@ -16,6 +16,7 @@ import org.biojava.nbio.genome.parsers.gff.FeatureList;
 
 import static GVJ.utils.FastaUtils.getSequenceIdentifiers;
 import static GVJ.utils.GffUtils.getAllGeneIds;
+import static GVJ.utils.GffUtils.getCoordsForGene;
 
 import GVJ.models.DataManager;
 
@@ -264,10 +265,22 @@ public class fastaVisualization extends javax.swing.JPanel {
             return;
         }
 
-        DNASequence dnaSequenceObject = fastaMap.get(jComboBoxSelectFastaSeq.getSelectedItem());
+        String sequenceId = jComboBoxSelectFastaSeq.getSelectedItem().toString();
+        DNASequence dnaSequenceObject = fastaMap.get(sequenceId);
+
         String nucleotideString = dnaSequenceObject.getSequenceAsString();
 
-        jTextAreaFastaDisplay.setText(nucleotideString);
+        // jTextAreaFastaDisplay.setText(nucleotideString);
+
+        // get coordinates from GFF for selected gene
+        int[] coords = getCoordsForGene(gff, selectedGene);
+        int start = coords[0];
+        int end = coords[1];
+
+        System.out.println("Gene: " + selectedFeature + " Start: " + start + " End: " + end);
+        String substring = nucleotideString.substring(start, end);
+        // jTextAreaFastaDisplay.setText(substring);
+        System.out.println("Substring: " + substring.length());
 
     }
 

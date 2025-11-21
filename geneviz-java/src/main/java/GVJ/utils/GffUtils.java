@@ -315,4 +315,21 @@ public class GffUtils {
         }
 
     }
+
+    public static int[] getCoordsForGene(FeatureList features, String geneId) {
+        FeatureList geneFeatures = features.selectByType("gene");
+
+        for (FeatureI gene : geneFeatures) {
+
+            String id = gene.getAttribute("ID");
+            if (id != null && id.equals(geneId)) {
+                Location loc = gene.location();
+                int start = loc.bioStart();
+                int end = loc.bioEnd();
+                return new int[] { start, end };
+            }
+
+        }
+        return null; // Gene ID not found
+    }
 }
