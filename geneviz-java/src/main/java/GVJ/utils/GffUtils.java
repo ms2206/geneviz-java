@@ -332,4 +332,17 @@ public class GffUtils {
         }
         return null; // Gene ID not found
     }
+
+    public static String getSequenceIdentifierfromGene(FeatureList features, String geneId) {
+        FeatureList geneFeatures = features.selectByType("gene");
+
+        for (FeatureI gene : geneFeatures) {
+
+            String id = gene.getAttribute("ID");
+            if (id != null && id.equals(geneId)) {
+                return gene.seqname();
+            }
+        }
+        return null; // Gene ID not found
+    }
 }

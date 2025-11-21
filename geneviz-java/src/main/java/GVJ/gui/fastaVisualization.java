@@ -17,6 +17,7 @@ import org.biojava.nbio.genome.parsers.gff.FeatureList;
 import static GVJ.utils.FastaUtils.getSequenceIdentifiers;
 import static GVJ.utils.GffUtils.getAllGeneIds;
 import static GVJ.utils.GffUtils.getCoordsForGene;
+import static GVJ.utils.GffUtils.getSequenceIdentifierfromGene;
 
 import GVJ.models.DataManager;
 
@@ -48,17 +49,8 @@ public class fastaVisualization extends javax.swing.JPanel {
          * Update FASTA Sequence Names
          */
         // Clear existing items
-        jComboBoxSelectFastaSeq.removeAllItems();
         jComboBoxSelectGene.removeAllItems();
         jComboBoxSelectFeature.removeAllItems();
-
-        // Populate jComboBoxSelectFastaSeq with sequence IDs from DataManager
-        Map<String, DNASequence> fastaMap = dataManager.getFastaData();
-        // get sequence IDs
-        List<String> sequenceIDs = getSequenceIdentifiers(fastaMap);
-        for (String id : sequenceIDs) {
-            jComboBoxSelectFastaSeq.addItem(id);
-        }
 
         /*
          * Update Gene Names from GFF Data
@@ -76,7 +68,7 @@ public class fastaVisualization extends javax.swing.JPanel {
         /*
          * Update Feature Types from hardcoded list #TODO dynamic from GFF
          */
-        List<String> featureTypes = List.of("gene", "mRNA", "intron", "exon", "CDS");
+        List<String> featureTypes = List.of("mRNA", "intron", "exon", "CDS");
         for (String featureType : featureTypes) {
             jComboBoxSelectFeature.addItem(featureType);
         }
@@ -94,14 +86,13 @@ public class fastaVisualization extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaFastaDisplay = new javax.swing.JTextArea();
-        jComboBoxSelectFastaSeq = new javax.swing.JComboBox<>();
-        jLabelSelectFastaSeq = new javax.swing.JLabel();
         jLabelSelectGene = new javax.swing.JLabel();
         jComboBoxSelectGene = new javax.swing.JComboBox<>();
         jLabelSelectFeature = new javax.swing.JLabel();
@@ -116,11 +107,6 @@ public class fastaVisualization extends javax.swing.JPanel {
         jTextAreaFastaDisplay.setRows(5);
         jTextAreaFastaDisplay.setToolTipText("");
         jScrollPane1.setViewportView(jTextAreaFastaDisplay);
-
-        jComboBoxSelectFastaSeq.setModel(
-                new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabelSelectFastaSeq.setText("Select Sequence:");
 
         jLabelSelectGene.setText("Select Gene:");
 
@@ -147,40 +133,31 @@ public class fastaVisualization extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGroup(jPanel1Layout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jLabelSelectFastaSeq)
-                                                                .addComponent(jComboBoxSelectFastaSeq,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 187,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(jPanel1Layout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jLabelSelectGene,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 126,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jComboBoxSelectGene,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 187,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(18, 18, 18)
-                                                        .addGroup(jPanel1Layout
-                                                                .createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jLabelSelectFeature,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 115,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabelSelectGene,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 126,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jComboBoxSelectGene,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 187,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabelSelectFeature,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 115,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addComponent(jComboBoxSelectFeature,
                                                                         javax.swing.GroupLayout.PREFERRED_SIZE, 187,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGap(29, 29, 29))
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 87,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(58, 58, 58)
+                                                                .addComponent(jButtonUpdate,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 87,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(38, 38, 38)));
         jPanel1Layout.setVerticalGroup(
@@ -193,29 +170,21 @@ public class fastaVisualization extends javax.swing.JPanel {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabelSelectFeature)
                                                 .addGap(5, 5, 5)
-                                                .addComponent(jComboBoxSelectFeature,
+                                                .addGroup(jPanel1Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jComboBoxSelectFeature,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButtonUpdate)))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabelSelectGene)
+                                                .addGap(5, 5, 5)
+                                                .addComponent(jComboBoxSelectGene,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabelSelectGene)
-                                                        .addGap(5, 5, 5)
-                                                        .addComponent(jComboBoxSelectGene,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabelSelectFastaSeq)
-                                                        .addGap(5, 5, 5)
-                                                        .addComponent(jComboBoxSelectFastaSeq,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonUpdate)
-                                .addGap(20, 20, 20)));
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(55, 55, 55)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -244,6 +213,7 @@ public class fastaVisualization extends javax.swing.JPanel {
         // verify selectedGene
         // Get all gene IDs from GFF data
         FeatureList gff = dataManager.getGffData();
+
         List<String> geneIds = getAllGeneIds(gff);
 
         if (!selectedGene.equals("Select All") && !geneIds.contains(selectedGene)) {
@@ -254,42 +224,31 @@ public class fastaVisualization extends javax.swing.JPanel {
             return;
         }
 
-        // Upudate display area
-        Map<String, DNASequence> fastaMap = dataManager.getFastaData();
-
-        if (jComboBoxSelectFastaSeq.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this,
-                    "No FASTA sequence selected.",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String sequenceId = jComboBoxSelectFastaSeq.getSelectedItem().toString();
-        DNASequence dnaSequenceObject = fastaMap.get(sequenceId);
-
-        String nucleotideString = dnaSequenceObject.getSequenceAsString();
-
-        // jTextAreaFastaDisplay.setText(nucleotideString);
-
         // get coordinates from GFF for selected gene
         int[] coords = getCoordsForGene(gff, selectedGene);
         int start = coords[0];
         int end = coords[1];
 
+        // get sequence inferred from selected feature
+        String seqKey = getSequenceIdentifierfromGene(gff, selectedGene);
+        System.out.println("Sequence Key: " + seqKey);
+        System.out.println("Selected Gene: " + selectedGene);
+
+        // Upudate display area
+        Map<String, DNASequence> fastaMap = dataManager.getFastaData();
+        DNASequence dnaSequence = fastaMap.get(seqKey);
+        String fullSequence = dnaSequence.getSequenceAsString();
+        String substring = fullSequence.substring(start, end); // Adjust for 0-based index
+
         System.out.println("Gene: " + selectedFeature + " Start: " + start + " End: " + end);
-        String substring = nucleotideString.substring(start, end);
-        // jTextAreaFastaDisplay.setText(substring);
-        System.out.println("Substring: " + substring.length());
+        jTextAreaFastaDisplay.setText(substring);
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBoxSelectFastaSeq;
     private javax.swing.JComboBox<String> jComboBoxSelectFeature;
     private javax.swing.JComboBox<String> jComboBoxSelectGene;
-    private javax.swing.JLabel jLabelSelectFastaSeq;
     private javax.swing.JLabel jLabelSelectFeature;
     private javax.swing.JLabel jLabelSelectGene;
     private javax.swing.JPanel jPanel1;
