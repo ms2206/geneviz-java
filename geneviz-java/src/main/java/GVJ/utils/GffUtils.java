@@ -357,7 +357,9 @@ public class GffUtils {
     }
 
     public static List<Location> getSelectedFeatureLocations(FeatureList features, String selectedGene,
-            String selectedFeature) {
+            String selectedFeature) throws Exception {
+
+        System.out.println("Getting locations for feature: " + selectedFeature + " in gene: " + selectedGene);
 
         List<Location> featureLocations = new java.util.ArrayList<>();
 

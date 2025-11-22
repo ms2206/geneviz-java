@@ -4,7 +4,17 @@
  */
 package GVJ.gui;
 
+import static GVJ.utils.GffUtils.getSelectedFeatureLocations;
+
 import java.awt.Graphics;
+import java.util.List;
+
+import org.biojava.nbio.genome.parsers.gff.FeatureList;
+import org.biojava.nbio.genome.parsers.gff.Location;
+
+import GVJ.models.DataManager;
+
+import java.awt.Color;
 
 /**
  *
@@ -12,11 +22,31 @@ import java.awt.Graphics;
  */
 public class geneVisPanel extends javax.swing.JPanel {
 
+    private DataManager dataManager;
+    private String selectedFeature = "exon"; // Default feature type
+    private String selectedGene;
+    private FeatureList gff;
+
     /**
      * Creates new form geneVisPanel
      */
     public geneVisPanel() {
         initComponents();
+        // Extract a list of Locations for each feature in gene
+    }
+
+    public void setDataManager(DataManager dataManager) {
+        this.dataManager = dataManager;
+    }
+
+    public void setSelectedGene(String gene) {
+        this.selectedGene = gene;
+        repaint();
+    }
+
+    public void setSelectedFeature(String feature) {
+        this.selectedFeature = feature;
+        repaint();
     }
 
     /**
@@ -26,21 +56,22 @@ public class geneVisPanel extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Gene Visualization"));
+        setMinimumSize(new java.awt.Dimension(250, 250));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 390, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 276, Short.MAX_VALUE));
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -49,14 +80,80 @@ public class geneVisPanel extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawRect(50, 100, 100, 100); // Draw a simple square to represent the house
-        g.drawPolygon(new int[] { 50, 100, 150 }, new int[] { 100, 50, 100 }, 3); // Draw a triangle roof
-        g.drawRect(60, 110, 25, 25); // Draw a window
-        g.drawArc(110, 107, 30, 30, 0, 360); // Draw a circle window
-        // g.drawRoundRect(90, 150, 20, 50, 100, 20); // Draw a door
-        g.drawLine(90, 200, 90, 165); // Left side of door
-        g.drawLine(110, 200, 110, 165); // Right side of door
-        g.drawArc(90, 150, 20, 30, 0, 180); // Top of door
+
+        // Gene Representation
+        int panelWidth = getWidth();
+
+        int panelHeight = getHeight();
+
+        int midY = panelHeight / 2;
+
+        int padding = panelWidth / 10;
+
+        // Draw gene shape
+        drawGeneShape(g, panelWidth, midY, padding);
+
+        // set highlight color
+        Color highlightCol = setColor(selectedFeature);
+
+        System.out.println("Selected Feature: " + selectedFeature);
+
+        if (selectedGene == null || selectedGene.isEmpty()) {
+            System.out.println("No gene selected.");
+            return;
+        }
+
+        List<Location> featureLocations = getSelectedFeatureLocations(gff,
+                selectedGene, selectedFeature);
+
+        for (Location loc : featureLocations) {
+            // Map feature location to panel
+            addFeatureRectangle(g, panelWidth, midY, padding, highlightCol, loc);
+        }
 
     }
+
+    private void drawGeneShape(Graphics g, int panelWidth, int midY, int padding) {
+
+        // left of gene
+        int geneLeftX = padding;
+
+        // right of gene
+        int geneRightX = panelWidth - padding;
+
+        // top of gene
+        g.drawLine(geneLeftX, midY - 15, geneRightX, midY - 15);
+        // bottom of gene
+        g.drawLine(geneLeftX, midY + 15, geneRightX, midY + 15);
+        // left side of gene
+        g.drawArc(geneLeftX - 15, midY - 15, 30, 30, 90, 180);
+        // right side of gene
+        g.drawArc(geneRightX - 15, midY - 15, 30, 30, 270, 180);
+    }
+
+    private void addFeatureRectangle(Graphics g, int panelWidth, int midY, int padding, Color highlightCol,
+            Location loc) {
+        // left of gene
+        int geneLeftX = padding;
+        System.out.println("Gene Left X: " + geneLeftX);
+
+        // right of gene
+        int geneRightX = panelWidth - padding;
+        System.out.println("Gene Right X: " + geneRightX);
+
+        System.out.println("Location : " + loc.toString());
+
+    }
+
+    // private void drawExon(Graphics g,
+    private Color setColor(String featureType) {
+        return switch (featureType) {
+            case "mRNA" -> new Color(135, 206, 250, 150); // Light Blue
+            case "intron" -> new Color(144, 238, 144, 150); // Light Green
+            case "exon" -> new Color(255, 182, 193, 150); // Light Pink
+            case "CDS" -> new Color(255, 255, 0, 150); // Yellow
+            default -> new Color(211, 211, 211, 150); // Light Gray for unknown types
+        };
+    }
+
 }

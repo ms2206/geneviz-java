@@ -37,6 +37,10 @@ public class fastaVisualization extends javax.swing.JPanel {
          */
         public fastaVisualization() {
                 initComponents();
+
+                // send geneVisPanel data
+                geneVisPanel1.setDataManager(dataManager);
+
         }
 
         // Set DataManager
@@ -52,6 +56,7 @@ public class fastaVisualization extends javax.swing.JPanel {
                  * Update FASTA Sequence Names
                  */
                 // Clear existing items
+                // #TODO dont refresh if already loaded
                 jComboBoxSelectGene.removeAllItems();
                 jComboBoxSelectFeature.removeAllItems();
 
@@ -91,118 +96,167 @@ public class fastaVisualization extends javax.swing.JPanel {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaFastaDisplay = new javax.swing.JTextArea();
-        jLabelSelectGene = new javax.swing.JLabel();
-        jComboBoxSelectGene = new javax.swing.JComboBox<>();
-        jLabelSelectFeature = new javax.swing.JLabel();
-        jComboBoxSelectFeature = new javax.swing.JComboBox<>();
-        jButtonUpdate = new javax.swing.JButton();
-        geneVisPanel1 = new GVJ.gui.geneVisPanel();
+                jPanel1 = new javax.swing.JPanel();
+                jScrollPane1 = new javax.swing.JScrollPane();
+                jTextAreaFastaDisplay = new javax.swing.JTextArea();
+                jLabelSelectGene = new javax.swing.JLabel();
+                jComboBoxSelectGene = new javax.swing.JComboBox<>();
+                jLabelSelectFeature = new javax.swing.JLabel();
+                jComboBoxSelectFeature = new javax.swing.JComboBox<>();
+                jButtonUpdate = new javax.swing.JButton();
+                geneVisPanel1 = new GVJ.gui.geneVisPanel();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FASTA Visualization", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+                jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "FASTA Visualization",
+                                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                                javax.swing.border.TitledBorder.TOP));
 
-        jTextAreaFastaDisplay.setColumns(20);
-        jTextAreaFastaDisplay.setLineWrap(true);
-        jTextAreaFastaDisplay.setRows(5);
-        jTextAreaFastaDisplay.setToolTipText("");
-        jTextAreaFastaDisplay.setMinimumSize(new java.awt.Dimension(200, 50));
-        jScrollPane1.setViewportView(jTextAreaFastaDisplay);
+                jTextAreaFastaDisplay.setColumns(20);
+                jTextAreaFastaDisplay.setLineWrap(true);
+                jTextAreaFastaDisplay.setRows(5);
+                jTextAreaFastaDisplay.setToolTipText("");
+                jTextAreaFastaDisplay.setMinimumSize(new java.awt.Dimension(200, 50));
+                jScrollPane1.setViewportView(jTextAreaFastaDisplay);
 
-        jLabelSelectGene.setText("Select Gene:");
+                jLabelSelectGene.setText("Select Gene:");
 
-        jComboBoxSelectGene.setEditable(true);
-        jComboBoxSelectGene.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+                jComboBoxSelectGene.setEditable(true);
+                jComboBoxSelectGene.setModel(new javax.swing.DefaultComboBoxModel<>(
+                                new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabelSelectFeature.setText("Select Feature:");
+                jLabelSelectFeature.setText("Select Feature:");
 
-        jComboBoxSelectFeature.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+                jComboBoxSelectFeature.setModel(new javax.swing.DefaultComboBoxModel<>(
+                                new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButtonUpdate.setText("Update");
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
-            }
-        });
+                jButtonUpdate.setText("Update");
+                jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jButtonUpdateActionPerformed(evt);
+                        }
+                });
 
-        javax.swing.GroupLayout geneVisPanel1Layout = new javax.swing.GroupLayout(geneVisPanel1);
-        geneVisPanel1.setLayout(geneVisPanel1Layout);
-        geneVisPanel1Layout.setHorizontalGroup(
-            geneVisPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        geneVisPanel1Layout.setVerticalGroup(
-            geneVisPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
-        );
+                javax.swing.GroupLayout geneVisPanel1Layout = new javax.swing.GroupLayout(geneVisPanel1);
+                geneVisPanel1.setLayout(geneVisPanel1Layout);
+                geneVisPanel1Layout.setHorizontalGroup(
+                                geneVisPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 0, Short.MAX_VALUE));
+                geneVisPanel1Layout.setVerticalGroup(
+                                geneVisPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 98, Short.MAX_VALUE));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelSelectGene, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSelectGene, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelSelectFeature, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBoxSelectFeature, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
-                    .addComponent(geneVisPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(geneVisPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelSelectFeature)
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxSelectFeature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonUpdate)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelSelectGene)
-                        .addGap(5, 5, 5)
-                        .addComponent(jComboBoxSelectGene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45))
-        );
+                javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+                jPanel1.setLayout(jPanel1Layout);
+                jPanel1Layout.setHorizontalGroup(
+                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGap(37, 37, 37)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(jLabelSelectGene,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                126,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(jComboBoxSelectGene,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                187,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(jLabelSelectFeature,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                115,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGroup(jPanel1Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addComponent(jComboBoxSelectFeature,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                187,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addGap(58, 58, 58)
+                                                                                                .addComponent(jButtonUpdate,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                87,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                Short.MAX_VALUE))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout
+                                                                .createSequentialGroup()
+                                                                .addContainerGap(28, Short.MAX_VALUE)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING,
+                                                                                false)
+                                                                                .addComponent(jScrollPane1,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                750, Short.MAX_VALUE)
+                                                                                .addComponent(geneVisPanel1,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                Short.MAX_VALUE))
+                                                                .addGap(26, 26, 26)));
+                jPanel1Layout.setVerticalGroup(
+                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addContainerGap(21, Short.MAX_VALUE)
+                                                                .addComponent(jScrollPane1,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                234,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(geneVisPanel1,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(jPanel1Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addComponent(jLabelSelectFeature)
+                                                                                                .addGap(5, 5, 5)
+                                                                                                .addGroup(jPanel1Layout
+                                                                                                                .createParallelGroup(
+                                                                                                                                javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                                                                .addComponent(jComboBoxSelectFeature,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                                .addComponent(jButtonUpdate)))
+                                                                                .addGroup(jPanel1Layout
+                                                                                                .createSequentialGroup()
+                                                                                                .addComponent(jLabelSelectGene)
+                                                                                                .addGap(5, 5, 5)
+                                                                                                .addComponent(jComboBoxSelectGene,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                .addGap(45, 45, 45)));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-    }// </editor-fold>//GEN-END:initComponents
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+                this.setLayout(layout);
+                layout.setHorizontalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                                .addGap(27, 27, 27)
+                                                                .addComponent(jPanel1,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addContainerGap(31, Short.MAX_VALUE)));
+                layout.setVerticalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                                .addGap(22, 22, 22)
+                                                                .addComponent(jPanel1,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addContainerGap(60, Short.MAX_VALUE)));
+        }// </editor-fold>//GEN-END:initComponents
 
         private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -217,19 +271,26 @@ public class fastaVisualization extends javax.swing.JPanel {
                         e.printStackTrace();
                 }
 
+                // Update geneVisPanel
+                String selectedFeature = (String) jComboBoxSelectFeature.getSelectedItem();
+                String selectedGene = (String) jComboBoxSelectGene.getSelectedItem();
+
+                geneVisPanel1.setSelectedFeature(selectedFeature);
+                geneVisPanel1.setSelectedGene(selectedGene);
+
         }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GVJ.gui.geneVisPanel geneVisPanel1;
-    private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBoxSelectFeature;
-    private javax.swing.JComboBox<String> jComboBoxSelectGene;
-    private javax.swing.JLabel jLabelSelectFeature;
-    private javax.swing.JLabel jLabelSelectGene;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextAreaFastaDisplay;
-    // End of variables declaration//GEN-END:variables
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private GVJ.gui.geneVisPanel geneVisPanel1;
+        private javax.swing.JButton jButtonUpdate;
+        private javax.swing.JComboBox<String> jComboBoxSelectFeature;
+        private javax.swing.JComboBox<String> jComboBoxSelectGene;
+        private javax.swing.JLabel jLabelSelectFeature;
+        private javax.swing.JLabel jLabelSelectGene;
+        private javax.swing.JPanel jPanel1;
+        private javax.swing.JScrollPane jScrollPane1;
+        private javax.swing.JTextArea jTextAreaFastaDisplay;
+        // End of variables declaration//GEN-END:variables
 
         private void updateFastaDisplay() {
                 // get selected gene and feature
@@ -319,6 +380,10 @@ public class fastaVisualization extends javax.swing.JPanel {
                         case "CDS" -> new Color(255, 255, 0, 150); // Yellow
                         default -> new Color(211, 211, 211, 150); // Light Gray for unknown types
                 };
+        }
+
+        public void sendDataManagerToGeneVisPanel() {
+                geneVisPanel1.setDataManager(dataManager);
         }
 
 }
