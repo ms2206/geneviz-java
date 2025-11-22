@@ -403,7 +403,6 @@ public class basicStatistics extends javax.swing.JPanel {
                 if (jComboBoxSelectGene.getItemCount() > 5) { // being lazy here since NetBeans adds 4 items by default
                                                               // — which I could change #TODO change jComboBoxSelectGene
                                                               // to empty by default
-                        System.out.println("ComboBox already populated, skipping refresh.");
                         return; // Already populated, no need to refresh
                 } else {
 
