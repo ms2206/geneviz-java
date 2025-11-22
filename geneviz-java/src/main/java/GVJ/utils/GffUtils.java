@@ -6,6 +6,10 @@ package GVJ.utils;
 
 import java.util.List;
 import java.util.Stack;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import org.biojava.nbio.genome.parsers.gff.FeatureI;
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
 import org.biojava.nbio.genome.parsers.gff.Location;
@@ -383,4 +387,55 @@ public class GffUtils {
         return featureLocations;
     }
 
+    /*
+     * Populate a JTable model with GFF features
+     * 
+     * @param model The DefaultTableModel to populate
+     * 
+     * @param features The FeatureList from a parsed GFF file
+     * 
+     * @return The populated DefaultTableModel
+     */
+    public static void populateGffTable(DefaultTableModel gffTableModel,
+            FeatureList features) {
+
+        // Check if data is already loaded
+        if (features.size() == gffTableModel.getRowCount()) {
+            // data is loaded already
+            return;
+        } else {
+            // Load data
+            System.out.println("Populating GFF Table...");
+
+            System.out.println("Column count: " + gffTableModel.getColumnCount() +
+                    " Row count: " + gffTableModel.getRowCount());
+
+            // features.forEach(feature -> System.out.println("Feature: " +
+            // feature.toString().split("\t")[1]));
+
+            for (FeatureI feature : features) {
+                // #TODO wrap in try catch to handle malformed GFF entries
+
+                Object[] row = {
+                        feature.seqname(),
+                        feature.toString().split("\t")[1],
+                        feature.type(),
+                        feature.location().bioStart(),
+                        feature.location().bioEnd(),
+                        feature.toString().split("\t")[5],
+                        feature.location().bioStrand(),
+                        feature.toString().split("\t")[6],
+                        feature.toString().split("\t")[7]
+                };
+
+                gffTableModel.addRow(row);
+                System.out.println("Row " + gffTableModel.getRowCount() + " was added.");
+                System.out.println("getAttributes: " + feature.getAttributes());
+                System.out.println("getAttributes(String key): " + feature.getAttribute("ID"));
+                System.out.println("userData(): " + feature.userData());
+
+            }
+        }
+
+    }
 }

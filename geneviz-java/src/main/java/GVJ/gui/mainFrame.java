@@ -5,6 +5,7 @@
 package GVJ.gui;
 
 import GVJ.models.DataManager;
+import java.awt.Cursor;
 
 /**
  *
@@ -26,24 +27,29 @@ public class mainFrame extends javax.swing.JFrame {
 
         fileLoadPanel2.setDataManager(dataManager); // Pass DataManager to fileLoadPanel
         basicStatistics1.setDataManager(dataManager); // Pass DataManager to basicStatistics panel
-        fastaVisualization1.setDataManager(dataManager); // Pass DataManager
+        fastaVisualization1.setDataManager(dataManager); // Pass DataManager to fastaVisualization panel
+        gffVisualization1.setDataManager(dataManager); // Pass DataManager to gffVisualization panel
 
         // Disable the Basic Statistics tab until data is loaded
         jTabbedPane.setEnabledAt(1, false);
         // Disable the FASTA Visualization tab until data is loaded
         jTabbedPane.setEnabledAt(2, false);
+        // Disable the GFF Visualization tab until data is loaded
+        jTabbedPane.setEnabledAt(3, false);
 
         // Use a timer to periodically check if data is loaded
         javax.swing.Timer timer = new javax.swing.Timer(1000, e -> {
             if (dataManager.hasFastaData() && dataManager.hasGffData()) {
                 jTabbedPane.setEnabledAt(1, true);
                 jTabbedPane.setEnabledAt(2, true);
+                jTabbedPane.setEnabledAt(3, true);
 
             } else {
                 // close tab and disable
                 jTabbedPane.setSelectedIndex(0);
                 jTabbedPane.setEnabledAt(1, false);
                 jTabbedPane.setEnabledAt(2, false);
+                jTabbedPane.setEnabledAt(3, false);
             }
         });
         timer.start();
@@ -63,6 +69,7 @@ public class mainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -71,6 +78,7 @@ public class mainFrame extends javax.swing.JFrame {
         sequenceViewer1 = new GVJ.gui.SequenceViewer();
         basicStatistics1 = new GVJ.gui.basicStatistics();
         fastaVisualization1 = new GVJ.gui.fastaVisualization();
+        gffVisualization1 = new GVJ.gui.gffVisualization();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemImportFASTA = new javax.swing.JMenuItem();
@@ -95,7 +103,7 @@ public class mainFrame extends javax.swing.JFrame {
                 sequenceViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
                                 sequenceViewer1Layout.createSequentialGroup()
-                                        .addContainerGap(38, Short.MAX_VALUE)
+                                        .addContainerGap(115, Short.MAX_VALUE)
                                         .addComponent(basicStatistics1, javax.swing.GroupLayout.PREFERRED_SIZE, 700,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)));
@@ -110,6 +118,7 @@ public class mainFrame extends javax.swing.JFrame {
 
         jTabbedPane.addTab("Basic Statistics", sequenceViewer1);
         jTabbedPane.addTab("FASTA Visualization", fastaVisualization1);
+        jTabbedPane.addTab("GFF Visualization", gffVisualization1);
 
         jMenu1.setText("File");
 
@@ -177,6 +186,15 @@ public class mainFrame extends javax.swing.JFrame {
             basicStatistics1.refreshFASTAStats(); // Update FASTA statistics display
         } else if (selectedIndex == 2) {
             fastaVisualization1.refreshComboBoxes(); // Update FASTA visualization combo boxes
+        } else if (selectedIndex == 3) {
+            // Before: Show "wait" cursor
+            setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+            // Do the work
+            gffVisualization1.updateGffTable();
+
+            // After: Restore normal cursor
+            setCursor(Cursor.getDefaultCursor());
         }
 
     }// GEN-LAST:event_jTabbedPaneStateChanged
@@ -229,6 +247,7 @@ public class mainFrame extends javax.swing.JFrame {
     private GVJ.gui.basicStatistics basicStatistics1;
     private GVJ.gui.fastaVisualization fastaVisualization1;
     private GVJ.gui.fileLoadPanel fileLoadPanel2;
+    private GVJ.gui.gffVisualization gffVisualization1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

@@ -395,29 +395,38 @@ public class basicStatistics extends javax.swing.JPanel {
         // not very specific, relates to GFF combo boxes for future reference
         public void refreshComboBoxs() {
 
-                // Refresh Gene Selector ComboBox
-                jComboBoxSelectGene.removeAllItems(); // Clear existing items
-
                 // Get all gene IDs from GFF data
                 FeatureList gff = dataManager.getGffData();
                 List<String> geneIds = getAllGeneIds(gff);
 
-                // Append "Select All" option at the beginning
-                geneIds.add(0, "Select All");
+                // Check if comboBox is populated
+                if (jComboBoxSelectGene.getItemCount() > 5) { // being lazy here since NetBeans adds 4 items by default
+                                                              // — which I could change #TODO change jComboBoxSelectGene
+                                                              // to empty by default
+                        System.out.println("ComboBox already populated, skipping refresh.");
+                        return; // Already populated, no need to refresh
+                } else {
 
-                jComboBoxSelectGene.setEditable(true); // Make it editable for typing
-                for (String geneId : geneIds) {
-                        jComboBoxSelectGene.addItem(geneId);
-                }
+                        // Refresh Gene Selector ComboBox
+                        jComboBoxSelectGene.removeAllItems(); // Clear existing items
 
-                // Refresh Feature Selector ComboBox
-                // TODO make this dynamic based on GFF content: Add to tech debt log
+                        // Append "Select All" option at the beginning
+                        geneIds.add(0, "Select All");
 
-                List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
-                jComboBoxgetFeature.removeAllItems(); // Clear existing items
-                jComboBoxgetFeature.setEditable(true); // Make it editable for typing search
-                for (String featureType : featureTypes) {
-                        jComboBoxgetFeature.addItem(featureType);
+                        jComboBoxSelectGene.setEditable(true); // Make it editable for typing
+                        for (String geneId : geneIds) {
+                                jComboBoxSelectGene.addItem(geneId);
+                        }
+
+                        // Refresh Feature Selector ComboBox
+                        // TODO make this dynamic based on GFF content: Add to tech debt log
+
+                        List<String> featureTypes = Arrays.asList("gene", "mRNA", "intron", "exon", "CDS");
+                        jComboBoxgetFeature.removeAllItems(); // Clear existing items
+                        jComboBoxgetFeature.setEditable(true); // Make it editable for typing search
+                        for (String featureType : featureTypes) {
+                                jComboBoxgetFeature.addItem(featureType);
+                        }
                 }
         }
 
