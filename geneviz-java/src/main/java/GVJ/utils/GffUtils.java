@@ -357,7 +357,7 @@ public class GffUtils {
     }
 
     public static List<Location> getSelectedFeatureLocations(FeatureList features, String selectedGene,
-            String selectedFeature) throws Exception {
+            String selectedFeature) throws NullPointerException {
 
         System.out.println("Getting locations for feature: " + selectedFeature + " in gene: " + selectedGene);
 
