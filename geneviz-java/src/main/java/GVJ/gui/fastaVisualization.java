@@ -277,6 +277,7 @@ public class fastaVisualization extends javax.swing.JPanel {
 
                 geneVisPanel1.setSelectedFeature(selectedFeature);
                 geneVisPanel1.setSelectedGene(selectedGene);
+                geneVisPanel1.setHasLabel(false);
 
         }
 
