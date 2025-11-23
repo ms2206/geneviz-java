@@ -1,0 +1,17 @@
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/app/GenevizJava.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/SequenceViewer.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/basicStatistics.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/fastaVisualization.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/fileLoadPanel.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/geneVisPanel.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/gffVisualization.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/gui/mainFrame.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/io/FastaParser.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/io/GffParser.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/models/DataManager.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/testing/SWTC_001_test_FastaParser.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/testing/SWTC_003_test_GffParser.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/testing/SWTC_004_test_GffUtils.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/testing/SWTC_005_test_FastaStatistics.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/utils/FastaUtils.java
+/Users/mspriggs/NetBeansProjects/programming_using_java/geneviz-java/geneviz-java/src/main/java/GVJ/utils/GffUtils.java
