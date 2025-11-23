@@ -202,7 +202,7 @@ public class geneVisPanel extends javax.swing.JPanel {
         // Add text label for feature
         if (!this.hasLabel) {
 
-            String labelText = (featureLoc.bioStrand() == '+') ? "---> Positive" : "<--- Negative";
+            String labelText = (featureLoc.bioStrand() == '+') ? "---> Forward" : "<--- Reverse";
 
             g.setColor(Color.BLACK);
             g.drawString(labelText + " Strand", featureX1Coordinate, midY - 20);
