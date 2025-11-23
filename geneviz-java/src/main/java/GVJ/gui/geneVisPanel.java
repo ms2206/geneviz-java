@@ -7,7 +7,10 @@ package GVJ.gui;
 import static GVJ.utils.GffUtils.getSelectedFeatureLocations;
 
 import java.awt.Graphics;
+import java.io.Console;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.biojava.nbio.genome.parsers.gff.FeatureList;
 import org.biojava.nbio.genome.parsers.gff.Location;
@@ -86,29 +89,38 @@ public class geneVisPanel extends javax.swing.JPanel {
 
         int panelHeight = getHeight();
 
-        int midY = panelHeight / 2;
+        int panelMidYCood = panelHeight / 2;
 
-        int padding = panelWidth / 10;
+        int paddingPadding = panelWidth / 10;
 
         // Draw gene shape
-        drawGeneShape(g, panelWidth, midY, padding);
+        drawGeneShape(g, panelWidth, panelMidYCood, paddingPadding);
 
         // set highlight color
         Color highlightCol = setColor(selectedFeature);
 
-        System.out.println("Selected Feature: " + selectedFeature);
+        this.gff = dataManager.getGffData();
 
-        if (selectedGene == null || selectedGene.isEmpty()) {
-            System.out.println("No gene selected.");
+        try {
+
+            List<Location> featureLocations = getSelectedFeatureLocations(gff,
+                    selectedGene, selectedFeature);
+
+            for (Location loc : featureLocations) {
+                // get gene length
+                List<Location> geneLocationList = getSelectedFeatureLocations(gff,
+                        selectedGene, "gene");
+                Location geneLoc = geneLocationList.get(0);
+
+                // Map feature location to panel
+                addFeatureRectangle(g, panelWidth, panelMidYCood, paddingPadding, highlightCol, loc, geneLoc);
+            }
+
+        } catch (NullPointerException e) {
+            System.out.println("Error in paintComponent from geneVisPanel:");
+            System.out.println(e.getMessage());
+
             return;
-        }
-
-        List<Location> featureLocations = getSelectedFeatureLocations(gff,
-                selectedGene, selectedFeature);
-
-        for (Location loc : featureLocations) {
-            // Map feature location to panel
-            addFeatureRectangle(g, panelWidth, midY, padding, highlightCol, loc);
         }
 
     }
@@ -132,16 +144,44 @@ public class geneVisPanel extends javax.swing.JPanel {
     }
 
     private void addFeatureRectangle(Graphics g, int panelWidth, int midY, int padding, Color highlightCol,
-            Location loc) {
-        // left of gene
+            Location featureLoc, Location geneLoc) {
+
+        // left of gene drawing
         int geneLeftX = padding;
-        System.out.println("Gene Left X: " + geneLeftX);
 
-        // right of gene
+        // right of gene drawing
         int geneRightX = panelWidth - padding;
-        System.out.println("Gene Right X: " + geneRightX);
 
-        System.out.println("Location : " + loc.toString());
+        // gene model Location for drawing
+        Location geneDrawingLoc = new Location(geneLeftX, geneRightX);
+
+        // relative gene drawing to gene model
+        int featureRelativeStartBpCoor = featureLoc.start() - geneLoc.start();
+        int featureRelativeEndBpCoor = featureLoc.end() - geneLoc.start();
+
+        // get strand information
+        char geneStrand = geneLoc.bioStrand();
+        System.out.println("Gene Strand: " + geneStrand);
+
+        // convert length in bp to pixels
+        double scale = (double) (geneDrawingLoc.length()) / geneLoc.length();
+
+        // find shape start and end in drawing coordinates
+        int featureX1Coordinate = geneDrawingLoc.start() + (int) (featureRelativeStartBpCoor * scale);
+        System.out.println("Feature X1 Coordinate: " + featureX1Coordinate);
+        int featureX2Coordinate = geneDrawingLoc.start() + (int) (featureRelativeEndBpCoor * scale);
+        System.out.println("Feature X2 Coordinate: " + featureX2Coordinate);
+        int shapeWidth = featureX2Coordinate - featureX1Coordinate;
+
+        // draw rectangle for feature
+        int featureHeight = 30;
+        g.setColor(highlightCol);
+
+        // For positive strand, draw as is:
+        g.fillRect(featureX1Coordinate, midY - 15, shapeWidth, featureHeight);
+
+        // System.out.println("Relative Feature Location: " +
+        // relativeFeatureLoc.toString());
 
     }
 

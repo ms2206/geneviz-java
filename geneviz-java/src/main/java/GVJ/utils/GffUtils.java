@@ -321,7 +321,9 @@ public class GffUtils {
     }
 
     /**
-     * Get the start and end coordinates for a given gene ID
+     * Get the start and end coordinates for a given gene ID.
+     * Slightly redundantation functionality as getSelectedFeatureLocations passsing
+     * in gene feature would achieve the same result.
      * 
      * @param features The FeatureList from a parsed GFF file
      * @param geneId   The gene ID to filter by
@@ -358,8 +360,6 @@ public class GffUtils {
 
     public static List<Location> getSelectedFeatureLocations(FeatureList features, String selectedGene,
             String selectedFeature) throws NullPointerException {
-
-        System.out.println("Getting locations for feature: " + selectedFeature + " in gene: " + selectedGene);
 
         List<Location> featureLocations = new java.util.ArrayList<>();
 
@@ -431,13 +431,10 @@ public class GffUtils {
                 };
 
                 gffTableModel.addRow(row);
-                System.out.println("Row " + gffTableModel.getRowCount() + " was added.");
-                System.out.println("getAttributes: " + feature.getAttributes());
-                System.out.println("getAttributes(String key): " + feature.getAttribute("ID"));
-                System.out.println("userData(): " + feature.userData());
 
             }
         }
 
     }
+
 }

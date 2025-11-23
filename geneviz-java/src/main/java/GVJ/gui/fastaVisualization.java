@@ -352,22 +352,34 @@ public class fastaVisualization extends javax.swing.JPanel {
                 Color highlightCol = setColor(selectedFeature);
 
                 // Extract a list of Locations for each feature in gene
-                List<Location> featureLocations = getSelectedFeatureLocations(gff, selectedGene, selectedFeature);
-                System.out.println("Feature Locations: " + featureLocations);
+                try {
+                        List<Location> featureLocations = getSelectedFeatureLocations(gff, selectedGene,
+                                        selectedFeature);
 
-                // feature locations are relative to full sequence, need to adjust to relative
-                // to
-                // displayed sequence
+                        // feature locations are relative to full sequence, need to adjust to relative
+                        // to
+                        // displayed sequence
 
-                for (Location featureLocation : featureLocations) {
-                        int featureStart = featureLocation.bioStart() - geneStart; // relative to displayed sequence
-                        int featureEnd = featureStart + featureLocation.length() + 1; // relative to displayed sequence
-                        System.out.println("Feature Start: " + featureStart + ", Feature End: " + featureEnd);
+                        for (Location featureLocation : featureLocations) {
+                                int featureStart = featureLocation.bioStart() - geneStart; // relative to displayed
+                                                                                           // sequence
+                                int featureEnd = featureStart + featureLocation.length() + 1; // relative to displayed
+                                                                                              // sequence
+                                System.out.println("Feature Start: " + featureStart + ", Feature End: " + featureEnd);
 
-                        Highlighter highlighter = jTextAreaFastaDisplay.getHighlighter();
-                        highlighter.addHighlight(featureStart, featureEnd,
-                                        new DefaultHighlighter.DefaultHighlightPainter(highlightCol));
+                                Highlighter highlighter = jTextAreaFastaDisplay.getHighlighter();
+                                highlighter.addHighlight(featureStart, featureEnd,
+                                                new DefaultHighlighter.DefaultHighlightPainter(highlightCol));
 
+                        }
+
+                } catch (NullPointerException e) {
+                        JOptionPane.showMessageDialog(this,
+                                        "No features of type '" + selectedFeature + "' found for gene '"
+                                                        + selectedGene + "'.",
+                                        "Error",
+                                        JOptionPane.ERROR_MESSAGE);
+                        return;
                 }
 
         }
