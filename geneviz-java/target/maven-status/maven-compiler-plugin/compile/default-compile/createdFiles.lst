@@ -1,5 +1,4 @@
 GVJ/utils/GffUtils.class
-GVJ/testing/SWTC_004_test_GffUtils.class
 GVJ/gui/mainFrame.class
 GVJ/gui/mainFrame$3.class
 GVJ/testing/SWTC_001_test_FastaParser.class
@@ -11,7 +10,6 @@ GVJ/app/GenevizJava$1.class
 GVJ/gui/geneVisPanel.class
 GVJ/gui/basicStatistics$2.class
 GVJ/gui/fastaVisualization.class
-GVJ/testing/SWTC_003_test_GffParser.class
 GVJ/gui/gffVisualization$1.class
 GVJ/gui/fileLoadPanel.class
 GVJ/io/GffParser.class
@@ -28,6 +26,5 @@ GVJ/io/FastaParser.class
 GVJ/gui/fileLoadPanel$4.class
 GVJ/gui/basicStatistics.class
 GVJ/app/GenevizJava.class
-GVJ/testing/SWTC_005_test_FastaStatistics.class
 GVJ/gui/mainFrame$1.class
 GVJ/gui/basicStatistics$3.class
