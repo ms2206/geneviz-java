@@ -22,6 +22,12 @@ target/
 *.ear
 com/
 geneviz-java/matrices
+geneviz-java/META-INF/
+org/
+*xsd
+*dtd
+xml/
+
 
 
 # ============================================
@@ -46,3 +52,9 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+geneviz-java/Log4j-charsets.properties
+geneviz-java/log4j2.xml
+geneviz-java/synth_look_and_feel_1.xml
+geneviz-java/LICENSE
+geneviz-java/ChangeLog
+geneviz-java/AUTHORS
