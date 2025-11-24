@@ -1,0 +1,102 @@
+Welcome to Openchart2 Charting and Plotting Library
+from Approximatrix, LLC
+
+Introduction 
+------------ 
+
+Openchart2 is a collection of Java classes to provide rendering of a
+variety of 2D charts/plots. The library is licensed under the GNU Lesser
+General Public License, which allows the library to be included in
+closed-source and proprietary projects as long as the library code
+remains unchanged.  Further documentation of the library, including more
+general documentation and usage instructions, is available from the
+Openchart2 page at Approximatrix.  All Openchart2 documentation is
+freely available.
+
+Supported Chart Types
+---------------------
+
+Openchart2 supports a variety of 2D charts, as shown below:
+
+   1. Bar Charts (including Stacked Bar Charts)
+   2. Pie Charts
+   3. Radar Charts
+   4. Scatter Plots (including Line Charts, Point Charts, or a combination)
+   5. Dot Plots
+
+Furthermore, the rendering system used by Openchart2 allows multiple
+chart types to be rendered simultaneously in the same view.
+
+Supported Data Sources/Models
+-----------------------------
+
+Openchart2 can handle a variety of data sources, although the chart
+types may place restrictions on the allowed data.  Nominally, Openchart2
+can handle any number of data arrays through its ChartDataModel classes. 
+Specialized data models are available for database sources and scatter
+plots.
+
+Dependencies
+------------
+
+Openchart2 depends only on a working Java 1.5-compliant (or better) VM and 
+runtime library.  No other external dependencies exist.
+
+Support
+-------
+
+Approximatrix provides full support for the Openchart2 library.  Feature
+requests/bug fixes will always be handled in a timely manner by the
+Approximatrix team.  Commercial support of the library is available, and
+Approximatrix may be contacted for support pricing, which provides
+priority development and bug fixing.
+
+The Openchart2 home page, including all support information and
+documentation, can be found at:
+
+	http://www.approximatrix.com/products/openchart2
+
+Code Submission
+---------------
+
+Openchart2 is an open-source project, and Approximatrix welcomes any
+improvements and feature additions from interested developers.  Code
+contributed to the main Openchart2 distribution must be licensed under
+the GNU Lesser General Public License, version 2.1 or greater. 
+Copyrights are not required to be assigned to Approximatrix, and all
+authors will be attributed correctly.
+
+Authors
+-------
+
+Openchart2 is a branch of the original JOpenChart library written by
+Sebastian Müller.  Openchart2 was branched by Approximatrix, LLC, to
+provide full support of the library and to update and add extensive
+features, especially related to scatter plots, dynamic zooming, and
+Swing compatibility. 
+
+A complete list of authors can be found in AUTHORS.
+
+Copyright
+---------
+
+Openchart2 is copyrighted by the following:
+Copyright 2005-2008 Approximatrix, LLC
+Copyright 2001  Sebastian Müller
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to:
+
+Free Software Foundation, Inc.
+51 Franklin Street, Fifth Floor
+Boston, MA  02110-1301  USA
