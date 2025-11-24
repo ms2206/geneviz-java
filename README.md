@@ -54,7 +54,7 @@ The basic statistics tab displays two options: FASTA and Features.
 Per gene features include [mRNA, exon, intron, CDS]. </li>
 </ul>
 
-<img src="geneviz-java/src/main/java/GVJ/docs/images/featureTab.png" alt="Basic Statistics - Features">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/featuresTab.png" alt="Basic Statistics - Features">
 
 ## FASTA VIsualization Panel
 
