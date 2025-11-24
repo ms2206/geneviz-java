@@ -17,6 +17,7 @@ Geneviz-Java is a Java-based application for visualizing genomic data. It provid
 ## Installation
 
 <ol>
-<li>Download the JAR file from `/geneviz-java/target/genevis-java*jar`
+<li>Download the JAR file from <code>/geneviz-java/target/genevis-java*.jar</code>.
+<li>Ensure you have Java 21 or higher installed on your system.
 <li>Double-click the JAR file to run the application.
 </ol>
