@@ -26,7 +26,7 @@ Geneviz-Java is a Java-based application for visualizing genomic data. It provid
 
 The file expects the user to load a FASTA file and a GFF3 file (Note: currently only GFF3 file support is available). The user may also load these files from the File menu bar.
 
-<img src="geneviz-java//src/main/java/GVJ/docs/images/fileSelection.png" alt="File Selection">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/fileSelection.png" alt="File Selection">
 
 ## Basic Statistics
 
@@ -54,7 +54,7 @@ The basic statistics tab displays two options: FASTA and Features.
 Per gene features include [mRNA, exon, intron, CDS]. </li>
 </ul>
 
-<img src="geneviz-java//src/main/java/GVJ/docs/images/featureTab.png" alt="Basic Statistics - Features">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/featureTab.png" alt="Basic Statistics - Features">
 
 ## FASTA VIsualization Panel
 
@@ -62,13 +62,13 @@ The FASTA Visualization tab allows the user to see the FASTA sequences at a sele
 
 The gene visualization shows a visual representation of the gene model. In the current release the gene model will show left-to-right orientation with a label indicating the direction of the gene. Note: future release will automatically re-orientate the gene model based on strand direction.
 
-<img src="geneviz-java//src/main/java/GVJ/docs/images/fastaVis.png" alt="FASTA Visualization Panel">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/fastaVis.png" alt="FASTA Visualization Panel">
 
 ## GFF Visualization Table
 
 The GFF Visualization table shows a tabular view of the GFF file. Note: this table can take a while to load depending on the size of your input file. Max recommended size for this version is 66.7MB — support for faster parsing into data streams will be made available in future versions.
 
-<img src="geneviz-java/src/main/java/GVJ/docs/images/featuresVis.png" alt="GFF Visualization Table">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/featuresViz.png" alt="GFF Visualization Table">
 
 ## Misc
 
