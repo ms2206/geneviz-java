@@ -41,7 +41,7 @@ The basic statistics tab displays two options: FASTA and Features.
 <li>Displays the average GC count expressed as a percentage of the sequences in the FASTA file.</li>
 </ul>
 
-<img src="geneviz-java//src/main/java/GVJ/docs/images/fastaTab.png" alt="Basic Statistics - FASTA">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/fastaTab.png" alt="Basic Statistics - FASTA">
 
 ### Features
 
@@ -68,7 +68,7 @@ The gene visualization shows a visual representation of the gene model. In the c
 
 The GFF Visualization table shows a tabular view of the GFF file. Note: this table can take a while to load depending on the size of your input file. Max recommended size for this version is 66.7MB — support for faster parsing into data streams will be made available in future versions.
 
-<img src="geneviz-java//src/main/java/GVJ/docs/images/featuresVis.png" alt="GFF Visualization Table">
+<img src="geneviz-java/src/main/java/GVJ/docs/images/featuresVis.png" alt="GFF Visualization Table">
 
 ## Misc
 
