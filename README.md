@@ -22,6 +22,10 @@ Geneviz-Java is a Java-based application for visualizing genomic data. It provid
 <li>Double-click the JAR file to run the application.
 </ol>
 
+## Program Structure
+
+<img src="geneviz-java/src/main/java/GVJ/docs/images/mermainDiagram.svg" alt="Program Structure">
+
 ## File Selection
 
 The file expects the user to load a FASTA file and a GFF3 file (Note: currently only GFF3 file support is available). The user may also load these files from the File menu bar.
